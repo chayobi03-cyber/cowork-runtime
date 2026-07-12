@@ -36,3 +36,6 @@
 1. 판정 주체 확정 (질문 4)
 2. 사내 시스템 확인 담당·일정 배정
 3. 확정된 내용으로 `STRUCTURE_DECISION_OPTIONS.md` → Decision Log로 전환
+4. `STAKEHOLDER_COMMUNICATION.md`의 소파트별 절(현재 미정)을 실제 파트장 답변으로 채우고,
+   발송 타이밍(질문 5 답변)을 확정해 전달 시작
+5. 사내 시스템 확인 결과에 따라 `SHARED_FOLDER_AUTOMATION.md`의 "실행 주체 후보" 확정

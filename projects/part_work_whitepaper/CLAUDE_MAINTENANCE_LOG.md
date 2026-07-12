@@ -184,3 +184,26 @@
   독립 운영될 때 이 문서만으로는 안 돌아가는 구조가 됐을 위험
 - 앞으로 이 프로젝트의 모든 절차형 문서(D절 같은)는 "이 세션 밖에서도 통하는가"를 항상
   자가진단해야 함 — 이번 정정이 그 기준(이식성 확인 기준)을 만든 계기
+
+## 2026-07-12 — STAKEHOLDER_COMMUNICATION.md, SHARED_FOLDER_AUTOMATION.md 신설
+
+**변경 사항**
+- `STAKEHOLDER_COMMUNICATION.md` 신설: 역할(파트장/일반파트원/챔피언/판정관여자) × 소파트별
+  전달 매트릭스. 안내 문구는 원본 문서(TOPIC_CARD_TEMPLATE.md 등)를 가리키기만 하고 재작성
+  안 함 — 이중 관리 방지
+- `SHARED_FOLDER_AUTOMATION.md` 신설: 공유폴더 기반 자동화 설계(축1: 파일→D절 자동트리거,
+  축2: 폴더구조↔백서구조 동기화). **설계까지만 v1**, 실행은 사내 시스템 확인 후 M2에서
+  진행하도록 명시
+- 두 문서 다 AI_CONTEXT.md 참고문서 목록에 연결, ROADMAP.md M2에 SHARED_FOLDER_AUTOMATION
+  설계 연결, DEPARTMENT_MEETING_AGENDA.md 회의후 액션에 두 문서 반영 시점 추가
+
+**설계 의도**
+- SHARED_FOLDER_AUTOMATION은 TOPIC-0002/M2와 범위가 겹치는데, 이걸 새 Topic으로 등록하지
+  않고 "설계 문서"로만 남김 — 사내 시스템 미확정 상태에서 Registry에 실행 대상처럼 등록하면
+  또 다른 형태의 "확정 표현" 과설계가 될 위험(외부 감사 Operating Location View 원칙 재적용)
+- STAKEHOLDER_COMMUNICATION은 원본 문서를 복제하지 않는 "필터/라우팅" 역할로만 설계 — A절
+  (문서갱신 원칙, 본문vs카드 역할분리)과 동일한 패턴을 부서원 전달에도 적용
+
+**다음 세션 확인할 것**
+- 소파트별 절(현재 전부 미정)은 회의에서 파트장 답변이 나오면 채운다
+- SHARED_FOLDER_AUTOMATION 실행 주체는 사내 시스템 확인 전까지 결정 보류 상태 유지
