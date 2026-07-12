@@ -1,0 +1,25 @@
+# TOPIC_REGISTRY.yaml
+# v1 스키마 — Topic Card 접수 후 이 레지스트리에 요약 등록한다.
+# 필드는 TOPIC_CARD_TEMPLATE.md의 Level A 필드와 1:1 대응한다.
+#
+# status 값: candidate(접수) / under_review(검토중) / needs_changes / approved / rejected / hold
+#   ※ status=candidate 는 "구현됨"을 의미하지 않는다 (AI_CONTEXT.md 금지추론 목록 참조)
+
+schema_version: v1
+
+topics:
+  - topic_id: TOPIC-0001
+    topic_name: "S2P Parser (예시 — 실제 등록 전 샘플)"
+    subpart: ""                      # 관련 소파트 (미정 시 공란 유지)
+    problem: ""
+    representative_input: ""
+    representative_output: ""
+    candidate_mvp: false             # true라도 "구현 완료"가 아니라 "MVP 후보 검토 대상"임
+    company_only_validation: null    # Y/N — 체크리스트 통과 전에는 null 유지
+    external_ai_safety: null         # Y/N — 체크리스트 통과 전에는 null 유지
+    status: candidate
+    next_action: ""
+    last_updated: ""
+
+# 신규 등록 시 이 샘플 행을 복제하지 말고, 실제 Topic Card 내용을 기반으로 새 항목을 추가한다.
+# company_only_validation / external_ai_safety는 EXPORT_SAFETY_CHECKLIST.md 통과 후에만 값을 채운다.
