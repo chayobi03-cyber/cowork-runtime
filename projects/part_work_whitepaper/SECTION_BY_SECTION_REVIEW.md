@@ -1,5 +1,10 @@
 # Part Work Whitepaper — 섹션별 감사 요청 개별 점검
 
+> ⚠️ **이 문서는 1회성 감사 기록이다.** 원본 외부 감사(2026-07-12)에 대한 당시 판단을 담고
+> 있으며, 앞으로 계속 갱신되는 살아있는 문서가 아니다. **최신 방법론·원칙은
+> `WRITING_METHODOLOGY.md`(작성 방법론)와 `ROADMAP.md`(마일스톤)를 참조**하고, 이 문서는
+> "왜 v1이 축소된 형태로 시작했는지"의 배경 근거로만 사용한다.
+
 > 원본 외부 감사 의뢰 프롬프트(2026-07-12)의 섹션 3~15에 명시된 "감사 요청" 질문을 하나씩
 > 점검한다. 전체 요약 판정(NEEDS CHANGES)은 이미 나왔으므로, 이 문서는 그 판정의 근거를
 > 섹션 단위로 분해해 어떤 항목을 살리고 어떤 항목을 버릴지 명확히 한다.
@@ -232,7 +237,8 @@ Diátaxis(문서 역할 분리)는 실제로 지금 구조(본문 요약 vs 상�
 ADR_TEMPLATE, INTERNAL_SYSTEM_CHECKLIST, HUMAN_INPUT_SYSTEM_PROPOSAL, AI_CONTEXT_STRUCTURE_
 PROPOSAL은 회의 이후 또는 사내 시스템 확인 이후로 이동.
 
-## 다음 액션
+## 다음 액션 (완료됨 — 이력)
 
-기존 Plan 문서(`PART_WORK_WHITEPAPER_HANDOFF_PLAN.md`)의 "다음 액션" 섹션을 이 9개 목록 기준으로
-갱신하고, 1번부터 순서대로 실제 파일 작성을 시작한다.
+이 9개 목록은 v1 착수 시점(커밋 8529898)에 실제로 생성 완료됐다. 이후 추가된 방법론·로드맵
+등은 `WRITING_METHODOLOGY.md`, `ROADMAP.md`를 참조. (구 `PART_WORK_WHITEPAPER_HANDOFF_PLAN.md`는
+이 문서와 내용이 중복되어 2026-07-12 정리 시 삭제됨.)

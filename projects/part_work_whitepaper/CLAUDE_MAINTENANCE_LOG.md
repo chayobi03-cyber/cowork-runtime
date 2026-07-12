@@ -117,3 +117,20 @@
 **다음 세션 확인할 것**
 - Topic이 5개 이상 등록되면 M1(지식그래프 연결) 착수 여부 재검토
 - M3(agent 생성)는 이번 세션에서 구현하지 않음 — 향후 별도 요청 시에도 M1/M2 선행 여부 먼저 확인
+
+## 2026-07-12 — 전체 구조 리뷰 및 정리 (18개→17개 파일)
+
+**변경 사항**
+- `PART_WORK_WHITEPAPER_HANDOFF_PLAN.md` 삭제 — `SECTION_BY_SECTION_REVIEW.md`와 내용
+  중복(둘 다 "v1 산출물 목록+다음 액션" 담당), 후자가 더 상세·최신이라 후자만 유지
+- `ATOMIC_PLAN.md`에 "13/13 완료, 이력 참고용" 헤더 추가 — 더 이상 살아있는 실행 계획이
+  아님을 명시, 새 계획은 별도 문서로 생성하도록 안내
+- `SECTION_BY_SECTION_REVIEW.md`에 "1회성 감사 기록" 배너 추가 — 이 문서가 계속 참조되며
+  사실상 두 번째 본문처럼 취급되는 걸 막고, 최신 원칙은 WRITING_METHODOLOGY.md/ROADMAP.md로
+  안내. 문서 끝의 "다음 액션"도 삭제된 HANDOFF_PLAN 참조를 완료 이력으로 정정
+
+**설계 의도**
+- 파트원 노출 문서(AI_CONTEXT/00/01/TOPIC_CARD_TEMPLATE 4개)는 그대로 작음 — 이번 정리는
+  창엽님/AI용 운영 문서 14개 중 중복·역할모호 3곳만 겨냥
+- 삭제 전 다른 살아있는 문서(AI_CONTEXT, ROADMAP 등)가 HANDOFF_PLAN을 참조하지 않는지 grep으로
+  확인 후 진행 — 참조는 로그성 기록(SECTION_REVIEW 자기 자신, MAINTENANCE_LOG)뿐이었음
