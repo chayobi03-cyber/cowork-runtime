@@ -1,0 +1,28 @@
+{
+  "node_id": "10_02_fit_review",
+  "node_name": "fit_review",
+  "node_name_ko": "도구 적합성 검토",
+  "tree_id": "10_tool_fit_gate",
+  "tree_name": "Tool Fit Gate Tree",
+  "role": "후보 도구를 업무 적합성, 정확성, 재현성, 유지보수성 등으로 평가한다.",
+  "status": "mvp",
+  "risk_level": "medium",
+  "inputs": [],
+  "outputs": [
+    {
+      "artifact_type": "tool_fit_review",
+      "path_pattern": "data/sample/tool_fit/TOOLFIT-*.json",
+      "schema": "schemas/tool_fit/tool_fit_review.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/tool_fit/tool_fit_review.schema.json"
+  ],
+  "connected_nodes": [
+    "09_06_tool_selection_log"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

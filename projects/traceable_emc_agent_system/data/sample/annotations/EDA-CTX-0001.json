@@ -1,0 +1,21 @@
+{
+  "eda_context_id": "EDA-CTX-0001",
+  "source_annotation_ids": [
+    "ANN-0001"
+  ],
+  "summary": "SPK_P 경로와 FB101, CN301 주변이 EMI 검토 대상임.",
+  "emc_intent": [
+    "filter_candidate_review",
+    "speaker_line_emi_risk_check",
+    "connector_area_review"
+  ],
+  "candidate_nets": [
+    "SPK_P"
+  ],
+  "candidate_components": [
+    "FB101",
+    "CN301"
+  ],
+  "created_at": "2026-07-07T16:06:24.202380Z",
+  "review_status": "human_review_required"
+}

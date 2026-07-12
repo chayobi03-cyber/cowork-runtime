@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/context/context_bundle.schema.json",
+  "title": "Context Bundle",
+  "type": "object",
+  "required": [
+    "context_id",
+    "created_at",
+    "items"
+  ],
+  "properties": {
+    "context_id": {
+      "type": "string",
+      "pattern": "^CTX-[0-9]{4,}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "item_type",
+          "path"
+        ],
+        "properties": {
+          "item_type": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

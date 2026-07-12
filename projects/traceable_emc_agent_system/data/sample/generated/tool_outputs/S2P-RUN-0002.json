@@ -1,0 +1,58 @@
+{
+  "run_id": "S2P-RUN-0002",
+  "input_file": "data/sample/inputs/s2p_real/BLM18SG221TN1_series.s2p.txt",
+  "frequency_unit": "Hz",
+  "port_count": 2,
+  "target_bands": [
+    {
+      "band_id": "EMI_LOW",
+      "f_start_hz": 30000000.0,
+      "f_stop_hz": 300000000.0
+    },
+    {
+      "band_id": "EMI_HIGH",
+      "f_start_hz": 300000000.0,
+      "f_stop_hz": 1000000000.0
+    }
+  ],
+  "metrics": {
+    "s21_min_db": -11.711313372138646,
+    "s21_max_db": -0.018246801489932674,
+    "s21_avg_db": -5.946914157524381,
+    "s11_min_db": -24.75601464860345,
+    "s11_max_db": -2.591836980557001,
+    "notes": "format=RI, reference=50 ohm, points=401"
+  },
+  "band_metrics": [
+    {
+      "band_id": "EMI_LOW",
+      "f_start_hz": 30000000.0,
+      "f_stop_hz": 300000000.0,
+      "metrics": {
+        "point_count": 115,
+        "s21_min_db": -11.710517708397216,
+        "s21_max_db": -6.946329194791147,
+        "s21_avg_db": -9.722703112172708,
+        "s11_min_db": -3.8719757176944714,
+        "s11_max_db": -2.606244381275827,
+        "notes": "computed from parsed S2P data"
+      }
+    },
+    {
+      "band_id": "EMI_HIGH",
+      "f_start_hz": 300000000.0,
+      "f_stop_hz": 1000000000.0,
+      "metrics": {
+        "point_count": 61,
+        "s21_min_db": -11.711313372138646,
+        "s21_max_db": -8.55344205797203,
+        "s21_avg_db": -10.651622156598847,
+        "s11_min_db": -2.9750172567064137,
+        "s11_max_db": -2.591836980557001,
+        "notes": "computed from parsed S2P data"
+      }
+    }
+  ],
+  "warnings": [],
+  "created_at": "2026-07-12T07:57:36.752064Z"
+}

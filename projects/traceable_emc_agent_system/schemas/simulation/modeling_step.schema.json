@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/simulation/modeling_step.schema.json",
+  "title": "Modeling Step",
+  "type": "object",
+  "required": [
+    "step_id",
+    "capture_session_id",
+    "step_order",
+    "app_name",
+    "summary",
+    "created_at",
+    "review_status"
+  ],
+  "properties": {
+    "step_id": {
+      "type": "string",
+      "pattern": "^MODELSTEP-[0-9]{4,}$"
+    },
+    "capture_session_id": {
+      "type": "string"
+    },
+    "step_order": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "app_name": {
+      "type": "string"
+    },
+    "window_title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "input_candidates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output_candidates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "automation_candidate": {
+      "type": "boolean",
+      "default": false
+    },
+    "suggested_script_type": {
+      "type": "string",
+      "enum": [
+        "vba",
+        "python",
+        "manual_only",
+        "unknown"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "human_review_required",
+        "approved",
+        "rejected",
+        "needs_revision"
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "review_id": "TOOLFIT-0001",
+  "tool_name": "Python 직접 S2P Parser",
+  "target_work_unit": "S2P 후보 부품 비교",
+  "alternative_tools": [
+    "scikit-rf",
+    "LLM-only 분석"
+  ],
+  "scores": {
+    "task_fit": 5,
+    "accuracy": 4,
+    "reproducibility": 5,
+    "maintainability": 4,
+    "extensibility": 3,
+    "demo_value": 4,
+    "practical_value": 5,
+    "risk": 2
+  },
+  "decision": "adopt_for_mvp",
+  "reason": "초기에는 구현 단순성과 검증 가능성을 우선한다.",
+  "reviewed_at": "2026-07-07T16:06:24.202380Z"
+}

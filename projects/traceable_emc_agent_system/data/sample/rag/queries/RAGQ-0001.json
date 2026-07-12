@@ -1,0 +1,8 @@
+{
+  "query_id": "RAGQ-0001",
+  "query_text": "SPK 라인 EMI 필터 후보 비교 시 유지해야 할 시험 조건은 무엇인가?",
+  "query_type": "test_method",
+  "linked_scenario_id": "SCN-0001",
+  "linked_annotation_id": "ANN-0001",
+  "created_at": "2026-07-07T16:06:24.202380Z"
+}

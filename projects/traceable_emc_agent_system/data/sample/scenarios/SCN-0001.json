@@ -1,0 +1,49 @@
+{
+  "scenario_id": "SCN-0001",
+  "title": "SPK line filter comparison with annotation and RAG",
+  "title_ko": "SPK 라인 필터 비교 + 주석 + RAG 샘플",
+  "scenario_type": "s2p_filter_compare",
+  "created_at": "2026-07-07T16:06:24.202380Z",
+  "inputs": [
+    {
+      "input_type": "context_bundle",
+      "path": "data/sample/context/CTX-0001.json",
+      "description": "샘플 컨텍스트 bundle"
+    },
+    {
+      "input_type": "annotation",
+      "path": "data/sample/annotations/ANN-0001.json",
+      "description": "SPK 신호 경로 주석"
+    }
+  ],
+  "expected_outputs": [
+    "s2p_analysis_result",
+    "evidence_candidates",
+    "constraint_check_result",
+    "report_data"
+  ],
+  "related_nodes": [
+    "01_05_scenario_card_generator",
+    "02_04_annotation_parser",
+    "03_04_rag_retriever",
+    "04_01_s2p_tools",
+    "04_03_constraint_tools"
+  ],
+  "related_tools": [
+    "TOOL-S2P-ANALYZER",
+    "TOOL-RAG-RETRIEVER",
+    "TOOL-CONSTRAINT-CHECKER"
+  ],
+  "related_rag_queries": [
+    "RAGQ-0001",
+    "RAGQ-0002"
+  ],
+  "assumptions": [
+    "샘플 데이터는 실제 제품 모델이 아니다.",
+    "초기 단계에서는 keyword RAG를 사용한다."
+  ],
+  "constraints": [
+    "개인 이름, 전화번호, 토큰 정보 제외"
+  ],
+  "review_status": "human_review_required"
+}

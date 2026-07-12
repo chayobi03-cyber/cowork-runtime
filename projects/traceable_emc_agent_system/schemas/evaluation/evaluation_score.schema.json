@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/evaluation/evaluation_score.schema.json",
+  "title": "Evaluation Score",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "target_type",
+    "target_id",
+    "score",
+    "passed",
+    "criteria_results",
+    "created_at"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string",
+      "pattern": "^EVAL-[0-9]{4,}$"
+    },
+    "target_type": {
+      "type": "string",
+      "enum": [
+        "tool_output",
+        "rag_output",
+        "annotation",
+        "report",
+        "run_case",
+        "script"
+      ]
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "criteria_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "criterion_id",
+          "passed"
+        ],
+        "properties": {
+          "criterion_id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "score": {
+            "type": "number"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "tool_id": "TOOL-SIMPLE-EVALUATOR",
+  "tool_name": "simple_evaluator",
+  "tool_name_ko": "단순 평가기",
+  "tool_type": "validator",
+  "entrypoint": "tools/simple_evaluator.py",
+  "inputs": [
+    {
+      "name": "generated_artifacts",
+      "schema": "artifact_paths"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "evaluation_score",
+      "schema": "schemas/evaluation/evaluation_score.schema.json"
+    }
+  ],
+  "risk_level": "low",
+  "requires_human_review": true,
+  "status": "mvp"
+}

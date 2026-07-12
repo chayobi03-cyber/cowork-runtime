@@ -1,0 +1,22 @@
+{
+  "tool_id": "TOOL-CONSTRAINT-CHECKER",
+  "tool_name": "constraint_checker",
+  "tool_name_ko": "제약조건 점검기",
+  "tool_type": "validator",
+  "entrypoint": "tools/constraint_checker.py",
+  "inputs": [
+    {
+      "name": "constraint_values",
+      "schema": "cli_arguments"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "constraint_check_result",
+      "schema": "schemas/tools/constraint_check_result.schema.json"
+    }
+  ],
+  "risk_level": "low",
+  "requires_human_review": true,
+  "status": "mvp"
+}

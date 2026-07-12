@@ -1,0 +1,35 @@
+{
+  "node_id": "07_02_tool_runner",
+  "node_name": "tool_runner",
+  "node_name_ko": "도구 실행기",
+  "tree_id": "07_agent_harness",
+  "tree_name": "Agent Harness Tree",
+  "role": "Tool Contract에 따라 도구 입력/출력 검증과 실행 로그를 관리한다.",
+  "status": "mvp",
+  "risk_level": "medium",
+  "inputs": [
+    {
+      "artifact_type": "tool_contract",
+      "path_pattern": "data/sample/tool_contracts/TOOL-*.json",
+      "schema": "schemas/tools/tool_contract.schema.json",
+      "required": false
+    }
+  ],
+  "outputs": [
+    {
+      "artifact_type": "tool_output",
+      "path_pattern": "data/sample/tool_outputs/*.json",
+      "required": false
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/tools/tool_contract.schema.json"
+  ],
+  "connected_nodes": [
+    "08_01_tool_evaluation",
+    "09_01_event_ledger"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

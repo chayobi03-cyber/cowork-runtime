@@ -1,0 +1,26 @@
+{
+  "tool_id": "TOOL-SIMPLE-RAG-RETRIEVER",
+  "tool_name": "simple_rag_retriever",
+  "tool_name_ko": "단순 RAG 검색기",
+  "tool_type": "retrieval",
+  "entrypoint": "tools/simple_rag_retriever.py",
+  "inputs": [
+    {
+      "name": "corpus",
+      "schema": "markdown_directory"
+    },
+    {
+      "name": "query",
+      "schema": "plain_text"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "evidence_candidates",
+      "schema": "schemas/rag/evidence_candidate.schema.json"
+    }
+  ],
+  "risk_level": "medium",
+  "requires_human_review": true,
+  "status": "mvp"
+}

@@ -1,0 +1,26 @@
+{
+  "tool_id": "TOOL-REPORT-DATA-BUILDER",
+  "tool_name": "report_data_builder",
+  "tool_name_ko": "보고서 데이터 생성기",
+  "tool_type": "generator",
+  "entrypoint": "tools/report_data_builder.py",
+  "inputs": [
+    {
+      "name": "analysis_artifacts",
+      "schema": "artifact_paths"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "report_json",
+      "schema": "plain_json"
+    },
+    {
+      "name": "report_markdown",
+      "schema": "markdown"
+    }
+  ],
+  "risk_level": "medium",
+  "requires_human_review": true,
+  "status": "mvp"
+}

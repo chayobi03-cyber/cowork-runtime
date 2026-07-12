@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/workflow/workflow_backlog.schema.json",
+  "title": "Workflow Backlog",
+  "type": "object",
+  "required": [
+    "workflow_id",
+    "workflow_name",
+    "purpose",
+    "inputs",
+    "outputs",
+    "related_nodes",
+    "status"
+  ],
+  "properties": {
+    "workflow_id": {
+      "type": "string",
+      "pattern": "^WF-[0-9]{4,}$"
+    },
+    "workflow_name": {
+      "type": "string"
+    },
+    "workflow_name_ko": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_agents": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_rag": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "questions_to_detail_later": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "mvp_candidate",
+        "active",
+        "hold",
+        "deprecated"
+      ]
+    }
+  }
+}

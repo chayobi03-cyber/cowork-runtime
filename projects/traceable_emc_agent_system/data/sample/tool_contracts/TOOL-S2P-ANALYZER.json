@@ -1,0 +1,23 @@
+{
+  "tool_id": "TOOL-S2P-ANALYZER",
+  "tool_name": "s2p_analyzer",
+  "tool_name_ko": "S2P 분석기",
+  "tool_type": "calculation",
+  "entrypoint": "tools/s2p_analyzer.py",
+  "inputs": [
+    {
+      "name": "s2p_file",
+      "schema": "raw_file_path",
+      "description": "Touchstone S2P file path"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "s2p_analysis_result",
+      "schema": "schemas/tools/s2p_analysis_result.schema.json"
+    }
+  ],
+  "risk_level": "low",
+  "requires_human_review": true,
+  "status": "mvp"
+}

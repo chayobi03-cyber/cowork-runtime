@@ -1,0 +1,25 @@
+{
+  "run_id": "RUN-0002",
+  "scenario_id": "SCN-0001",
+  "run_mode": "full_case",
+  "started_at": "2026-07-12T07:57:36.641930Z",
+  "finished_at": "2026-07-12T07:57:36.859710Z",
+  "nodes_to_run": [
+    "02_04_annotation_parser",
+    "03_04_rag_retriever",
+    "04_01_s2p_tools",
+    "04_03_constraint_tools",
+    "08_01_tool_evaluation"
+  ],
+  "input_bundle_path": "data/sample/scenarios/SCN-0001.json",
+  "output_paths": [
+    "data/sample/generated/annotations/EDA-CTX-0002.json",
+    "data/sample/generated/rag/evidence_candidates_0002.jsonl",
+    "data/sample/generated/tool_outputs/S2P-RUN-0002.json",
+    "data/sample/generated/tool_outputs/CONSTRAINT-RUN-0002.json",
+    "data/sample/generated/reports/REPORT-DATA-0002.json",
+    "data/sample/generated/reports/emc_report_draft_0002.md",
+    "data/sample/generated/evaluation/EVAL-0002.json"
+  ],
+  "status": "completed"
+}

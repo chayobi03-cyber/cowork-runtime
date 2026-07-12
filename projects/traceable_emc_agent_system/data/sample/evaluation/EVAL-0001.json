@@ -1,0 +1,28 @@
+{
+  "evaluation_id": "EVAL-0001",
+  "target_type": "tool_output",
+  "target_id": "S2P-RUN-0001",
+  "score": 80,
+  "passed": true,
+  "criteria_results": [
+    {
+      "criterion_id": "schema_validity",
+      "description": "S2P result schema valid",
+      "passed": true,
+      "score": 40
+    },
+    {
+      "criterion_id": "target_band_exists",
+      "description": "Target band exists",
+      "passed": true,
+      "score": 20
+    },
+    {
+      "criterion_id": "sample_warning_exists",
+      "description": "Sample-only warning included",
+      "passed": true,
+      "score": 20
+    }
+  ],
+  "created_at": "2026-07-07T16:06:24.202380Z"
+}

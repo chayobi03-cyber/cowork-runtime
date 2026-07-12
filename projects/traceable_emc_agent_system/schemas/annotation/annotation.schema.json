@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/annotation/annotation.schema.json",
+  "title": "EDA Annotation",
+  "type": "object",
+  "required": [
+    "annotation_id",
+    "source_type",
+    "source_path",
+    "annotation_type",
+    "label",
+    "geometry",
+    "created_at",
+    "review_status"
+  ],
+  "properties": {
+    "annotation_id": {
+      "type": "string",
+      "pattern": "^ANN-[0-9]{4,}$"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "schematic_image",
+        "odb_view_image",
+        "screen_capture",
+        "pdf_page_image"
+      ]
+    },
+    "source_path": {
+      "type": "string"
+    },
+    "annotation_type": {
+      "type": "string",
+      "enum": [
+        "signal_path",
+        "return_path",
+        "component_of_interest",
+        "filter_candidate",
+        "connector_or_cable",
+        "risk_region",
+        "initial_routing_hint",
+        "ground_reference",
+        "unknown_needs_ai_parse"
+      ]
+    },
+    "label": {
+      "type": "string"
+    },
+    "label_ko": {
+      "type": "string"
+    },
+    "geometry": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/bbox"
+        },
+        {
+          "$ref": "#/$defs/polyline"
+        },
+        {
+          "$ref": "#/$defs/point"
+        },
+        {
+          "$ref": "#/$defs/polygon"
+        }
+      ]
+    },
+    "linked_objects": {
+      "type": "object",
+      "properties": {
+        "nets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_role": {
+          "type": "string"
+        }
+      }
+    },
+    "emc_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "created_by": {
+      "type": "string",
+      "default": "user"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "human_labeled",
+        "ai_parsed",
+        "human_corrected",
+        "approved",
+        "rejected"
+      ]
+    }
+  },
+  "$defs": {
+    "bbox": {
+      "type": "object",
+      "required": [
+        "type",
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "properties": {
+        "type": {
+          "const": "bbox"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        }
+      }
+    },
+    "polyline": {
+      "type": "object",
+      "required": [
+        "type",
+        "points"
+      ],
+      "properties": {
+        "type": {
+          "const": "polyline"
+        },
+        "points": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "point": {
+      "type": "object",
+      "required": [
+        "type",
+        "x",
+        "y"
+      ],
+      "properties": {
+        "type": {
+          "const": "point"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      }
+    },
+    "polygon": {
+      "type": "object",
+      "required": [
+        "type",
+        "points"
+      ],
+      "properties": {
+        "type": {
+          "const": "polygon"
+        },
+        "points": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/rag/rag_query.schema.json",
+  "title": "RAG Query",
+  "type": "object",
+  "required": [
+    "query_id",
+    "query_text",
+    "query_type",
+    "created_at"
+  ],
+  "properties": {
+    "query_id": {
+      "type": "string",
+      "pattern": "^RAGQ-[0-9]{4,}$"
+    },
+    "query_text": {
+      "type": "string"
+    },
+    "query_type": {
+      "type": "string",
+      "enum": [
+        "test_method",
+        "failure_case",
+        "design_spec",
+        "vendor_guide",
+        "standard_summary",
+        "other"
+      ]
+    },
+    "linked_scenario_id": {
+      "type": "string"
+    },
+    "linked_annotation_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

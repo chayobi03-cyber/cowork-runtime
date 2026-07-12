@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/rag/rag_document.schema.json",
+  "title": "RAG Document Metadata",
+  "type": "object",
+  "required": [
+    "doc_id",
+    "doc_type",
+    "title",
+    "path",
+    "source_level",
+    "created_at",
+    "review_status"
+  ],
+  "properties": {
+    "doc_id": {
+      "type": "string",
+      "pattern": "^DOC-[0-9]{4,}$"
+    },
+    "doc_type": {
+      "type": "string",
+      "enum": [
+        "test_method",
+        "failure_case",
+        "design_spec",
+        "vendor_guide",
+        "standard_summary",
+        "other"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "source_level": {
+      "type": "string",
+      "enum": [
+        "internal_summary",
+        "internal_doc",
+        "public_doc",
+        "vendor_doc",
+        "standard",
+        "unknown"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": [
+        "allowed",
+        "minimal_redaction_required",
+        "restricted"
+      ],
+      "default": "allowed"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "reviewed",
+        "approved_for_rag",
+        "hold",
+        "deprecated"
+      ]
+    }
+  }
+}

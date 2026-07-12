@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/tool_fit/tool_fit_review.schema.json",
+  "title": "Tool Fit Review",
+  "type": "object",
+  "required": [
+    "review_id",
+    "tool_name",
+    "target_work_unit",
+    "scores",
+    "decision",
+    "reviewed_at"
+  ],
+  "properties": {
+    "review_id": {
+      "type": "string",
+      "pattern": "^TOOLFIT-[0-9]{4,}$"
+    },
+    "tool_name": {
+      "type": "string"
+    },
+    "target_work_unit": {
+      "type": "string"
+    },
+    "alternative_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scores": {
+      "type": "object",
+      "required": [
+        "task_fit",
+        "accuracy",
+        "reproducibility",
+        "maintainability",
+        "extensibility",
+        "demo_value",
+        "practical_value",
+        "risk"
+      ],
+      "properties": {
+        "task_fit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "accuracy": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "reproducibility": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "maintainability": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "extensibility": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "demo_value": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "practical_value": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "risk": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        }
+      }
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "adopt_for_mvp",
+        "adopt_later",
+        "reject",
+        "hold_for_review",
+        "experiment_only"
+      ]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

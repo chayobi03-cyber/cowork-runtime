@@ -1,0 +1,22 @@
+{
+  "tool_id": "TOOL-ANNOTATION-PARSER",
+  "tool_name": "annotation_parser",
+  "tool_name_ko": "EDA 주석 파서",
+  "tool_type": "parser",
+  "entrypoint": "tools/annotation_parser.py",
+  "inputs": [
+    {
+      "name": "annotation",
+      "schema": "schemas/annotation/annotation.schema.json"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "parsed_eda_context",
+      "schema": "schemas/annotation/parsed_eda_context.schema.json"
+    }
+  ],
+  "risk_level": "low",
+  "requires_human_review": true,
+  "status": "mvp"
+}

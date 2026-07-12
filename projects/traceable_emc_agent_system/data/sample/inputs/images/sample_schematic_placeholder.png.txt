@@ -1,0 +1,1 @@
+Placeholder for schematic image. 실제 이미지는 MVP 구현 시 별도 추가.

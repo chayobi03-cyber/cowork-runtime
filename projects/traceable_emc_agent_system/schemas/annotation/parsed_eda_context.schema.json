@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/annotation/parsed_eda_context.schema.json",
+  "title": "Parsed EDA Context",
+  "type": "object",
+  "required": [
+    "eda_context_id",
+    "source_annotation_ids",
+    "summary",
+    "emc_intent",
+    "created_at",
+    "review_status"
+  ],
+  "properties": {
+    "eda_context_id": {
+      "type": "string",
+      "pattern": "^EDA-CTX-[0-9]{4,}$"
+    },
+    "source_annotation_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "summary": {
+      "type": "string"
+    },
+    "emc_intent": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "candidate_nets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "candidate_components": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "human_review_required",
+        "approved",
+        "rejected",
+        "needs_revision"
+      ]
+    }
+  }
+}

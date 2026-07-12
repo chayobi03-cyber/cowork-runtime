@@ -1,0 +1,36 @@
+{
+  "node_id": "07_03_rag_runner",
+  "node_name": "rag_runner",
+  "node_name_ko": "RAG 실행기",
+  "tree_id": "07_agent_harness",
+  "tree_name": "Agent Harness Tree",
+  "role": "RAG query 실행, retrieved context 검증, evidence candidate 기록을 수행한다.",
+  "status": "mvp",
+  "risk_level": "medium",
+  "inputs": [
+    {
+      "artifact_type": "rag_query",
+      "path_pattern": "data/sample/rag/queries/RAGQ-*.json",
+      "schema": "schemas/rag/rag_query.schema.json",
+      "required": false
+    }
+  ],
+  "outputs": [
+    {
+      "artifact_type": "evidence_candidate",
+      "path_pattern": "data/sample/rag/evidence_candidates.jsonl",
+      "schema": "schemas/rag/evidence_candidate.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/rag/evidence_candidate.schema.json"
+  ],
+  "connected_nodes": [
+    "03_04_rag_retriever",
+    "08_02_rag_evaluation"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

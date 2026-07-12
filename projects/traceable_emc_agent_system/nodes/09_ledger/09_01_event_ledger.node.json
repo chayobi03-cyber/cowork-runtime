@@ -1,0 +1,28 @@
+{
+  "node_id": "09_01_event_ledger",
+  "node_name": "event_ledger",
+  "node_name_ko": "이벤트 장부",
+  "tree_id": "09_ledger",
+  "tree_name": "Ledger Tree",
+  "role": "실행 중 발생한 주요 이벤트를 append-only JSONL로 기록한다.",
+  "status": "mvp",
+  "risk_level": "low",
+  "inputs": [],
+  "outputs": [
+    {
+      "artifact_type": "event_ledger_event",
+      "path_pattern": "data/sample/ledgers/event_ledger.jsonl",
+      "schema": "schemas/ledger/event_ledger_event.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/ledger/event_ledger_event.schema.json"
+  ],
+  "connected_nodes": [
+    "07_07_trace_logger"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

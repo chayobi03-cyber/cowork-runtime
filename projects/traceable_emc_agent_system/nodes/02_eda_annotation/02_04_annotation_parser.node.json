@@ -1,0 +1,37 @@
+{
+  "node_id": "02_04_annotation_parser",
+  "node_name": "annotation_parser",
+  "node_name_ko": "주석 파서",
+  "tree_id": "02_eda_annotation",
+  "tree_name": "EDA Annotation Tree",
+  "role": "사람이 표시한 회로도/ODB annotation을 EMC 맥락으로 변환한다.",
+  "status": "mvp",
+  "risk_level": "medium",
+  "inputs": [
+    {
+      "artifact_type": "annotation",
+      "path_pattern": "data/sample/annotations/ANN-*.json",
+      "schema": "schemas/annotation/annotation.schema.json",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "artifact_type": "parsed_eda_context",
+      "path_pattern": "data/sample/annotations/EDA-CTX-*.json",
+      "schema": "schemas/annotation/parsed_eda_context.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/annotation/annotation.schema.json",
+    "schemas/annotation/parsed_eda_context.schema.json"
+  ],
+  "connected_nodes": [
+    "01_05_scenario_card_generator",
+    "03_03_rag_query"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

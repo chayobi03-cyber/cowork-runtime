@@ -1,0 +1,21 @@
+{
+  "report_id": "REPORT-DATA-0001",
+  "created_at": "2026-07-12T07:57:36.822547Z",
+  "scenario_id": "SCN-0001",
+  "sections": [
+    "scenario",
+    "eda_context",
+    "s2p_analysis",
+    "constraint_check",
+    "rag_evidence_candidates",
+    "review_needed"
+  ],
+  "source_artifacts": {
+    "scenario": "data/sample/scenarios/SCN-0001.json",
+    "eda_context": "data/sample/generated/annotations/EDA-CTX-0002.json",
+    "s2p_result": "data/sample/generated/tool_outputs/S2P-RUN-0002.json",
+    "constraint_result": "data/sample/generated/tool_outputs/CONSTRAINT-RUN-0002.json",
+    "evidence_jsonl": "data/sample/generated/rag/evidence_candidates_0002.jsonl"
+  },
+  "review_status": "human_review_required"
+}

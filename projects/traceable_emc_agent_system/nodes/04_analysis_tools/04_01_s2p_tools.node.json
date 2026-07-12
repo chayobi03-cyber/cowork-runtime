@@ -1,0 +1,35 @@
+{
+  "node_id": "04_01_s2p_tools",
+  "node_name": "s2p_tools",
+  "node_name_ko": "S2P 분석 도구",
+  "tree_id": "04_analysis_tools",
+  "tree_name": "Analysis Tool Tree",
+  "role": "S2P 파일을 분석해 목표 대역의 S-parameter 지표를 산출한다.",
+  "status": "mvp",
+  "risk_level": "low",
+  "inputs": [
+    {
+      "artifact_type": "s2p_file",
+      "path_pattern": "data/sample/inputs/s2p/*.s2p.txt",
+      "required": false
+    }
+  ],
+  "outputs": [
+    {
+      "artifact_type": "s2p_analysis_result",
+      "path_pattern": "data/sample/tool_outputs/S2P-RUN-*.json",
+      "schema": "schemas/tools/s2p_analysis_result.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/tools/s2p_analysis_result.schema.json"
+  ],
+  "connected_nodes": [
+    "07_02_tool_runner",
+    "08_01_tool_evaluation"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/tools/s2p_analysis_result.schema.json",
+  "title": "S2P Analysis Result",
+  "type": "object",
+  "required": [
+    "run_id",
+    "input_file",
+    "frequency_unit",
+    "port_count",
+    "target_bands",
+    "metrics",
+    "created_at"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^S2P-RUN-[0-9]{4,}$"
+    },
+    "input_file": {
+      "type": "string"
+    },
+    "frequency_unit": {
+      "type": "string",
+      "enum": [
+        "Hz",
+        "kHz",
+        "MHz",
+        "GHz"
+      ]
+    },
+    "port_count": {
+      "type": "integer",
+      "enum": [
+        2
+      ]
+    },
+    "target_bands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "band_id",
+          "f_start_hz",
+          "f_stop_hz"
+        ],
+        "properties": {
+          "band_id": {
+            "type": "string"
+          },
+          "f_start_hz": {
+            "type": "number"
+          },
+          "f_stop_hz": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "s21_min_db": {
+          "type": "number"
+        },
+        "s21_max_db": {
+          "type": "number"
+        },
+        "s21_avg_db": {
+          "type": "number"
+        },
+        "s11_min_db": {
+          "type": "number"
+        },
+        "s11_max_db": {
+          "type": "number"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "run_id": "CONSTRAINT-RUN-0002",
+  "candidate_id": "BLM18SG221TN1",
+  "checks": [
+    {
+      "check_name": "rated_current_margin",
+      "passed": true,
+      "value": 1.0,
+      "limit": 0.5,
+      "notes": "A"
+    },
+    {
+      "check_name": "dcr_limit",
+      "passed": true,
+      "value": 0.05,
+      "limit": 0.5,
+      "notes": "ohm"
+    },
+    {
+      "check_name": "height_limit",
+      "passed": true,
+      "value": 0.6,
+      "limit": 1.0,
+      "notes": "mm"
+    },
+    {
+      "check_name": "package_allowed",
+      "passed": true,
+      "value": "0603",
+      "limit": [
+        "0402",
+        "0603",
+        "1005",
+        "1608"
+      ],
+      "notes": "package code must be in allowed list"
+    }
+  ],
+  "passed": true,
+  "created_at": "2026-07-12T07:57:36.789662Z"
+}

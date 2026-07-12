@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/ledger/tool_selection_entry.schema.json",
+  "title": "Tool Selection Entry",
+  "type": "object",
+  "required": [
+    "selection_id",
+    "workflow_step",
+    "candidate_tools",
+    "selected_tool",
+    "reason",
+    "adoption_status",
+    "created_at"
+  ],
+  "properties": {
+    "selection_id": {
+      "type": "string",
+      "pattern": "^TOOLSEL-[0-9]{4,}$"
+    },
+    "workflow_step": {
+      "type": "string"
+    },
+    "candidate_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "selected_tool": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "rejected_tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "tool",
+          "reason"
+        ],
+        "properties": {
+          "tool": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "adoption_status": {
+      "type": "string",
+      "enum": [
+        "adopt_for_mvp",
+        "adopt_later",
+        "reject",
+        "hold_for_review",
+        "experiment_only"
+      ]
+    },
+    "revisit_condition": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

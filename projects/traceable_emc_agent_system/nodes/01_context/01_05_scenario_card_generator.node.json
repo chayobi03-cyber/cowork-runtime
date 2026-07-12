@@ -1,0 +1,43 @@
+{
+  "node_id": "01_05_scenario_card_generator",
+  "node_name": "scenario_card_generator",
+  "node_name_ko": "시나리오 카드 생성기",
+  "tree_id": "01_context",
+  "tree_name": "Context Tree",
+  "role": "사용자 입력, 파일, 화면, annotation 정보를 EMC 업무 시나리오 카드로 정리한다.",
+  "status": "mvp",
+  "risk_level": "medium",
+  "inputs": [
+    {
+      "artifact_type": "context_bundle",
+      "path_pattern": "data/sample/context/CTX-*.json",
+      "schema": "schemas/context/context_bundle.schema.json",
+      "required": false
+    },
+    {
+      "artifact_type": "parsed_eda_context",
+      "path_pattern": "data/sample/annotations/EDA-CTX-*.json",
+      "schema": "schemas/annotation/parsed_eda_context.schema.json",
+      "required": false
+    }
+  ],
+  "outputs": [
+    {
+      "artifact_type": "scenario_card",
+      "path_pattern": "data/sample/scenarios/SCN-*.json",
+      "schema": "schemas/context/scenario_card.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/context/scenario_card.schema.json"
+  ],
+  "connected_nodes": [
+    "02_06_annotation_to_context",
+    "03_03_rag_query",
+    "07_01_case_runner"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

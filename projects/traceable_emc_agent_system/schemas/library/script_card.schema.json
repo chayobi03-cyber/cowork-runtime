@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/library/script_card.schema.json",
+  "title": "Script Card",
+  "type": "object",
+  "required": [
+    "script_id",
+    "title",
+    "script_type",
+    "app_target",
+    "status",
+    "required_inputs",
+    "outputs",
+    "validation_status",
+    "approval_status"
+  ],
+  "properties": {
+    "script_id": {
+      "type": "string",
+      "pattern": "^SCRIPT-[0-9]{4,}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "title_ko": {
+      "type": "string"
+    },
+    "script_type": {
+      "type": "string",
+      "enum": [
+        "vba",
+        "python",
+        "markdown_template",
+        "other"
+      ]
+    },
+    "app_target": {
+      "type": "string",
+      "enum": [
+        "CST",
+        "Python",
+        "Report",
+        "General"
+      ]
+    },
+    "script_path": {
+      "type": "string"
+    },
+    "created_from": {
+      "type": "string",
+      "enum": [
+        "human_modeling_capture",
+        "manual_written",
+        "ai_candidate",
+        "imported_reference"
+      ]
+    },
+    "required_inputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": [
+        "not_tested",
+        "tested_on_sample",
+        "failed",
+        "passed"
+      ]
+    },
+    "approval_status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "reviewed",
+        "approved_for_internal_library",
+        "rejected"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "deprecated",
+        "hold"
+      ]
+    }
+  }
+}

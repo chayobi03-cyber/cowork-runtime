@@ -1,0 +1,49 @@
+{
+  "workflow_id": "WF-0001",
+  "workflow_name": "spk_filter_workflow",
+  "workflow_name_ko": "SPK 필터 비교 업무 흐름",
+  "purpose": "SPK 라인 EMI 필터 후보 비교 Flow를 나중에 구체화하기 위한 backlog.",
+  "inputs": [
+    "scenario_card",
+    "annotation",
+    "s2p_files",
+    "rag_documents"
+  ],
+  "outputs": [
+    "filter_comparison",
+    "evidence_candidates",
+    "report_draft"
+  ],
+  "related_nodes": [
+    "01_05_scenario_card_generator",
+    "02_04_annotation_parser",
+    "03_04_rag_retriever",
+    "04_01_s2p_tools",
+    "04_03_constraint_tools"
+  ],
+  "related_agents": [
+    "Context Intake Agent",
+    "EDA Parsing Agent",
+    "RAG Agent",
+    "Analysis Agent"
+  ],
+  "related_tools": [
+    "TOOL-S2P-ANALYZER",
+    "TOOL-CONSTRAINT-CHECKER"
+  ],
+  "related_rag": [
+    "test_method_rag",
+    "failure_phenomenon_rag",
+    "design_spec_comparison_rag"
+  ],
+  "validation_criteria": [
+    "근거 후보가 존재해야 함",
+    "제약조건 비교가 포함되어야 함",
+    "사람 검토 필요 표시가 있어야 함"
+  ],
+  "questions_to_detail_later": [
+    "시험법별 입력 항목은 무엇인가?",
+    "부품 후보 비교 기준은 어떤 가중치인가?"
+  ],
+  "status": "planned"
+}

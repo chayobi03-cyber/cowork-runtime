@@ -1,0 +1,35 @@
+{
+  "node_id": "08_01_tool_evaluation",
+  "node_name": "tool_evaluation",
+  "node_name_ko": "도구 평가",
+  "tree_id": "08_evaluation",
+  "tree_name": "Evaluation Tree",
+  "role": "Tool 출력의 schema, 수치 sanity, 오류 처리 여부를 평가한다.",
+  "status": "mvp",
+  "risk_level": "low",
+  "inputs": [
+    {
+      "artifact_type": "tool_output",
+      "path_pattern": "data/sample/tool_outputs/*.json",
+      "required": true
+    }
+  ],
+  "outputs": [
+    {
+      "artifact_type": "evaluation_score",
+      "path_pattern": "data/sample/evaluation/EVAL-*.json",
+      "schema": "schemas/evaluation/evaluation_score.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/evaluation/evaluation_score.schema.json"
+  ],
+  "connected_nodes": [
+    "07_05_evaluator_runner",
+    "09_01_event_ledger"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

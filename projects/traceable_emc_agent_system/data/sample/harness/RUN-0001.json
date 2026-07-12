@@ -1,0 +1,21 @@
+{
+  "run_id": "RUN-0001",
+  "scenario_id": "SCN-0001",
+  "run_mode": "dry_run",
+  "started_at": "2026-07-07T16:06:24.202380Z",
+  "finished_at": "2026-07-07T16:06:24.202380Z",
+  "nodes_to_run": [
+    "01_05_scenario_card_generator",
+    "02_04_annotation_parser",
+    "03_04_rag_retriever",
+    "04_01_s2p_tools",
+    "04_03_constraint_tools",
+    "08_01_tool_evaluation"
+  ],
+  "input_bundle_path": "data/sample/context/CTX-0001.json",
+  "output_paths": [
+    "data/sample/tool_outputs/S2P-RUN-0001.json",
+    "data/sample/rag/evidence_candidates.jsonl"
+  ],
+  "status": "completed"
+}

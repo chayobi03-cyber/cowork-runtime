@@ -1,0 +1,27 @@
+{
+  "run_id": "CONSTRAINT-RUN-0001",
+  "candidate_id": "FB101-CANDIDATE",
+  "checks": [
+    {
+      "check_name": "rated_current",
+      "passed": true,
+      "value": "500mA",
+      "limit": ">=300mA"
+    },
+    {
+      "check_name": "dcr",
+      "passed": true,
+      "value": "0.05ohm",
+      "limit": "<=0.1ohm"
+    },
+    {
+      "check_name": "height",
+      "passed": false,
+      "value": "0.95mm",
+      "limit": "<=0.8mm",
+      "notes": "샘플상 높이 조건 초과"
+    }
+  ],
+  "passed": false,
+  "created_at": "2026-07-07T16:06:24.202380Z"
+}

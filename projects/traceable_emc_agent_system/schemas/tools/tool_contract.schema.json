@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/tools/tool_contract.schema.json",
+  "title": "Tool Contract",
+  "type": "object",
+  "required": [
+    "tool_id",
+    "tool_name",
+    "tool_name_ko",
+    "tool_type",
+    "entrypoint",
+    "inputs",
+    "outputs",
+    "risk_level",
+    "status"
+  ],
+  "properties": {
+    "tool_id": {
+      "type": "string",
+      "pattern": "^TOOL-[A-Z0-9-]+$"
+    },
+    "tool_name": {
+      "type": "string"
+    },
+    "tool_name_ko": {
+      "type": "string"
+    },
+    "tool_type": {
+      "type": "string",
+      "enum": [
+        "parser",
+        "calculation",
+        "retrieval",
+        "generator",
+        "validator",
+        "runner"
+      ]
+    },
+    "entrypoint": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/io_spec"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/io_spec"
+      }
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "requires_human_review": {
+      "type": "boolean",
+      "default": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "mvp",
+        "adopted",
+        "hold",
+        "deprecated"
+      ]
+    }
+  },
+  "$defs": {
+    "io_spec": {
+      "type": "object",
+      "required": [
+        "name",
+        "schema"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

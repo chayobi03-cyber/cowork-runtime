@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/tools/constraint_check_result.schema.json",
+  "title": "Constraint Check Result",
+  "type": "object",
+  "required": [
+    "run_id",
+    "candidate_id",
+    "checks",
+    "passed",
+    "created_at"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^CONSTRAINT-RUN-[0-9]{4,}$"
+    },
+    "candidate_id": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "check_name",
+          "passed"
+        ],
+        "properties": {
+          "check_name": {
+            "type": "string"
+          },
+          "passed": {
+            "type": "boolean"
+          },
+          "value": {},
+          "limit": {},
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "passed": {
+      "type": "boolean"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

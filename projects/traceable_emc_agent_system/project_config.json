@@ -1,0 +1,42 @@
+{
+  "project_name": "Traceable EMC Agent System",
+  "created_at": "2026-07-07T16:06:24.202380Z",
+  "principles": [
+    "업무 Flow는 나중에 구체화한다.",
+    "Tree와 Node Contract를 먼저 고정한다.",
+    "Node는 공통 계약으로 관리하고, 산출물은 Artifact Schema로 검증한다.",
+    "Event Ledger는 원본 기록이고, Graph/Index는 파생 뷰다.",
+    "사용자 승인 없는 공식 등록/PASS/DONE은 금지한다."
+  ],
+  "mvp_scope": [
+    "Scenario Card",
+    "EDA Annotation",
+    "Simple RAG",
+    "S2P Analysis Result",
+    "Agent Harness Run Case",
+    "Evaluation Score",
+    "Event Ledger",
+    "Tool Selection Log",
+    "Tool Fit Review",
+    "Executable MVP Tools",
+    "Generated Case Outputs",
+    "Report Draft Builder",
+    "Generated Artifact Validation"
+  ],
+  "updated_at": "2026-07-12T00:00:00Z",
+  "version": "0.4.2",
+  "added_in_v0_4_2": [
+    "tools/simple_evaluator.py: criteria now read upstream tool judgment values",
+    "tests/test_simple_evaluator.py"
+  ],
+  "added_in_v0_4": [
+    "tools/s2p_analyzer.py",
+    "tools/annotation_parser.py",
+    "tools/simple_rag_retriever.py",
+    "tools/constraint_checker.py",
+    "tools/report_data_builder.py",
+    "tools/simple_evaluator.py",
+    "scripts/run_case.py",
+    "scripts/validate_generated_artifacts.py"
+  ]
+}

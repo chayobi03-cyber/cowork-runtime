@@ -1,0 +1,35 @@
+{
+  "node_id": "04_03_constraint_tools",
+  "node_name": "constraint_tools",
+  "node_name_ko": "제약조건 점검 도구",
+  "tree_id": "04_analysis_tools",
+  "tree_name": "Analysis Tool Tree",
+  "role": "부품 후보의 DCR, 정격전류, 크기, 높이 등 제약조건을 점검한다.",
+  "status": "mvp",
+  "risk_level": "medium",
+  "inputs": [
+    {
+      "artifact_type": "candidate_part",
+      "path_pattern": "data/sample/inputs/parts/*.json",
+      "required": false
+    }
+  ],
+  "outputs": [
+    {
+      "artifact_type": "constraint_check_result",
+      "path_pattern": "data/sample/tool_outputs/CONSTRAINT-RUN-*.json",
+      "schema": "schemas/tools/constraint_check_result.schema.json",
+      "required": true
+    }
+  ],
+  "schemas": [
+    "schemas/common/node_contract.schema.json",
+    "schemas/tools/constraint_check_result.schema.json"
+  ],
+  "connected_nodes": [
+    "07_02_tool_runner",
+    "08_01_tool_evaluation"
+  ],
+  "human_review_required": true,
+  "notes": "MVP 기준 Node 정의. 업무 Flow 확정 전에는 입출력과 Schema 검증 중심으로 사용한다."
+}

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/common/node_contract.schema.json",
+  "title": "Node Contract",
+  "type": "object",
+  "required": [
+    "node_id",
+    "node_name",
+    "node_name_ko",
+    "tree_id",
+    "tree_name",
+    "role",
+    "status",
+    "inputs",
+    "outputs",
+    "schemas",
+    "human_review_required"
+  ],
+  "properties": {
+    "node_id": {
+      "type": "string",
+      "pattern": "^[0-9]{2}_[0-9]{2}_[a-z0-9_]+$"
+    },
+    "node_name": {
+      "type": "string"
+    },
+    "node_name_ko": {
+      "type": "string"
+    },
+    "tree_id": {
+      "type": "string",
+      "pattern": "^[0-9]{2}_[a-z0-9_]+$"
+    },
+    "tree_name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "mvp",
+        "adopted",
+        "hold",
+        "deprecated"
+      ]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "default": "medium"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact_ref"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact_ref"
+      }
+    },
+    "schemas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "connected_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_review_required": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "artifact_ref": {
+      "type": "object",
+      "required": [
+        "artifact_type",
+        "path_pattern"
+      ],
+      "properties": {
+        "artifact_type": {
+          "type": "string"
+        },
+        "path_pattern": {
+          "type": "string"
+        },
+        "schema": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  }
+}

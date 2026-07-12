@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/context/scenario_card.schema.json",
+  "title": "Scenario Card",
+  "type": "object",
+  "required": [
+    "scenario_id",
+    "title",
+    "scenario_type",
+    "created_at",
+    "inputs",
+    "expected_outputs",
+    "related_nodes",
+    "review_status"
+  ],
+  "properties": {
+    "scenario_id": {
+      "type": "string",
+      "pattern": "^SCN-[0-9]{4,}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "title_ko": {
+      "type": "string"
+    },
+    "scenario_type": {
+      "type": "string",
+      "enum": [
+        "s2p_filter_compare",
+        "schematic_annotation",
+        "odb_annotation",
+        "test_method_lookup",
+        "failure_case_lookup",
+        "design_spec_compare",
+        "simulation_capture",
+        "report_generation",
+        "other"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/input_ref"
+      }
+    },
+    "expected_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_nodes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_rag_queries": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "human_review_required",
+        "approved",
+        "rejected",
+        "needs_revision"
+      ]
+    }
+  },
+  "$defs": {
+    "input_ref": {
+      "type": "object",
+      "required": [
+        "input_type",
+        "path"
+      ],
+      "properties": {
+        "input_type": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

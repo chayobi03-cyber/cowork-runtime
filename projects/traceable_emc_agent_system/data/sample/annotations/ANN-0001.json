@@ -1,0 +1,43 @@
+{
+  "annotation_id": "ANN-0001",
+  "source_type": "schematic_image",
+  "source_path": "data/sample/inputs/images/sample_schematic_placeholder.png",
+  "annotation_type": "signal_path",
+  "label": "SPK positive line",
+  "label_ko": "SPK 양극 신호 경로",
+  "geometry": {
+    "type": "polyline",
+    "points": [
+      [
+        100,
+        220
+      ],
+      [
+        220,
+        220
+      ],
+      [
+        360,
+        245
+      ]
+    ]
+  },
+  "linked_objects": {
+    "nets": [
+      "SPK_P"
+    ],
+    "components": [
+      "FB101",
+      "CN301"
+    ],
+    "expected_role": "emi_risk_path"
+  },
+  "emc_tags": [
+    "speaker_line",
+    "filter_candidate",
+    "radiation_risk"
+  ],
+  "created_at": "2026-07-07T16:06:24.202380Z",
+  "created_by": "user",
+  "review_status": "human_labeled"
+}

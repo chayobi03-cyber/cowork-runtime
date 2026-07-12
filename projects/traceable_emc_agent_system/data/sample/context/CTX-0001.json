@@ -1,0 +1,22 @@
+{
+  "context_id": "CTX-0001",
+  "created_at": "2026-07-07T16:06:24.202380Z",
+  "items": [
+    {
+      "item_type": "user_note",
+      "path": "data/sample/user_notes/user_note_0001.md",
+      "summary": "SPK 라인 EMI 필터 후보 비교를 위한 샘플 요청"
+    },
+    {
+      "item_type": "annotation",
+      "path": "data/sample/annotations/ANN-0001.json",
+      "summary": "회로도 이미지의 SPK 신호 경로 표시"
+    },
+    {
+      "item_type": "rag_document",
+      "path": "data/sample/rag/documents/DOC-0001.json",
+      "summary": "시험법 가이드 샘플 메타데이터"
+    }
+  ],
+  "notes": "개인 이름, 전화번호, 토큰 정보 제외한 빠른 실험용 샘플."
+}

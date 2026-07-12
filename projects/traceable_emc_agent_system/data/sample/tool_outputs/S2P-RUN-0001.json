@@ -1,0 +1,25 @@
+{
+  "run_id": "S2P-RUN-0001",
+  "input_file": "data/sample/inputs/s2p/sample_part.s2p.txt",
+  "frequency_unit": "Hz",
+  "port_count": 2,
+  "target_bands": [
+    {
+      "band_id": "BAND-300M-1G",
+      "f_start_hz": 300000000,
+      "f_stop_hz": 1000000000
+    }
+  ],
+  "metrics": {
+    "s21_min_db": -18.2,
+    "s21_max_db": -2.1,
+    "s21_avg_db": -8.7,
+    "s11_min_db": -12.3,
+    "s11_max_db": -1.0,
+    "notes": "샘플 수치이며 실제 계산값 아님"
+  },
+  "warnings": [
+    "sample_result_only"
+  ],
+  "created_at": "2026-07-07T16:06:24.202380Z"
+}

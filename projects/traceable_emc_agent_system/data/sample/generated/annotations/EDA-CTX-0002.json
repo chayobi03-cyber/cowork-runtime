@@ -1,0 +1,19 @@
+{
+  "eda_context_id": "EDA-CTX-0002",
+  "source_annotation_ids": [
+    "ANN-0001"
+  ],
+  "summary": "사람 표시 기반 EDA 맥락: SPK 양극 신호 경로 / EMC tags: filter_candidate, radiation_risk, speaker_line",
+  "emc_intent": [
+    "analyze_signal_path_for_emi_risk"
+  ],
+  "candidate_nets": [
+    "SPK_P"
+  ],
+  "candidate_components": [
+    "CN301",
+    "FB101"
+  ],
+  "created_at": "2026-07-12T07:57:36.670519Z",
+  "review_status": "human_review_required"
+}

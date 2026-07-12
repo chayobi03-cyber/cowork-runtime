@@ -1,0 +1,1 @@
+{"event_id": "EVT-0001", "timestamp": "2026-07-07T16:06:24.202380Z", "event_type": "run_started", "actor": "sample_runner", "target": "RUN-0001", "summary": "샘플 dry_run 시작", "related_run_id": "RUN-0001", "related_scenario_id": "SCN-0001", "related_artifacts": ["data/sample/scenarios/SCN-0001.json"], "severity": "info"}

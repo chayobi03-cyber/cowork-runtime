@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/rag/evidence_candidate.schema.json",
+  "title": "Evidence Candidate",
+  "type": "object",
+  "required": [
+    "evidence_candidate_id",
+    "source_doc_id",
+    "query_id",
+    "summary",
+    "relevance_score",
+    "source_quality_score",
+    "applicability_note",
+    "review_status"
+  ],
+  "properties": {
+    "evidence_candidate_id": {
+      "type": "string",
+      "pattern": "^EVC-[0-9]{4,}$"
+    },
+    "source_doc_id": {
+      "type": "string"
+    },
+    "query_id": {
+      "type": "string"
+    },
+    "matched_text_ref": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "relevance_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "source_quality_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "applicability_note": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "linked_scenario_id": {
+      "type": "string"
+    },
+    "review_status": {
+      "type": "string",
+      "enum": [
+        "candidate",
+        "accepted_as_evidence",
+        "rejected_as_irrelevant",
+        "needs_human_review"
+      ]
+    }
+  }
+}
