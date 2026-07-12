@@ -37,3 +37,6 @@
 
 - 상세 판단 근거: `SECTION_BY_SECTION_REVIEW.md`, `EXTERNAL_STRUCTURE_BENCHMARK_REPORT.md`
 - 운영 원칙 요약: `01_PART_WORK_WHITEPAPER.md`
+- **백서 작성 방법론**: `WRITING_METHODOLOGY.md` — 문서 갱신 원칙, 파트원 채택 저항 최소화,
+  입력 방식(텍스트/음성/스크린샷/화면녹화) 설계 근거. 새 방법론 아이디어는 이 문서의 해당 절
+  표에 항목만 추가하는 방식으로 갱신한다 (문서 구조 자체는 안 바뀜).
