@@ -10,7 +10,7 @@
 |---|---|---|---|---|---|
 | traceable_emc_agent_system | Non-School | 안정(known_open_items 없음, v0.4.2) | 신규 이슈 없음 — 관찰만 | 중 | 2026-07-12 |
 | doc-rag-converter | Non-School | MAJOR 오픈 | dead code(`infer_approval_candidate`/`detect_version_candidate_from_filename`) 파이프라인 연결 또는 README 정정 | 상 | 2026-07-12 |
-| MVP School 패키지 v0.5.4 | Non-School | MAJOR 3건 오픈 | run_report.json 스키마 정합, EMC_S2P_CST_NOTE 표준 인용, PROJECT_UPLOAD_GUIDE 갱신 | 상 | 2026-07-12 |
+| MVP School 패키지 v0.5.4 | Non-School | MAJOR 0건(3건 전부 해결 확인) | 신규 이슈 없음 — 관찰만 | 하 | 2026-07-12 |
 | KG Viewer MVP v0.2 | School (Graduate) | Post-grad backlog | 회사 PC Streamlit smoke evidence, negative test, 오프라인 설치 가이드, 부분 그래프 export → 상세는 School roster 참조 | 하 | 2026-07-12 |
 | 사내 AI 경진대회 출품작 | Non-School | 진행 중 | PCB/EMI Engineering Copilot 계열 완성 | 상 | 2026-07-12 |
 | Part Work Whitepaper / AI Context | Non-School | 보류(팀 미팅 전제) | v1 scope 축소 권고 후속 — 팀 미팅 후 재개 | 하 | 2026-07-12 |

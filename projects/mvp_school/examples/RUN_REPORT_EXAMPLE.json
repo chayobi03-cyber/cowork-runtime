@@ -1,0 +1,33 @@
+{
+  "package_name": "mvp_school",
+  "version": "v0.5.1-example",
+  "status": "pass|fail|partial",
+  "purpose": "Example run_report structure for a local MVP School package.",
+  "inputs": [
+    "IDEA_CARD.md",
+    "MVP_PLAN.md"
+  ],
+  "outputs": [
+    "LOCAL_HANDOFF.md",
+    "run_report.json"
+  ],
+  "commands": [
+    "python mvp_school/tools/validate_mvp_school.py mvp_school"
+  ],
+  "validation": [
+    {
+      "name": "required files",
+      "status": "pass"
+    },
+    {
+      "name": "README references",
+      "status": "pass"
+    }
+  ],
+  "known_limitations": [
+    "This is an example only; it is not accumulated benchmark evidence."
+  ],
+  "next_actions": [
+    "Apply the template to one real MVP candidate."
+  ]
+}

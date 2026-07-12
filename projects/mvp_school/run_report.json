@@ -1,0 +1,82 @@
+{
+  "mvp_name": "MVP School",
+  "version": "0.5.4",
+  "status": "pass",
+  "patch_type": "note_structure_patch",
+  "scope": [
+    "Add NOTE_REGISTRY.md for domain/tool/concept note indexing",
+    "Add PROJECT_SOURCE_INDEX.md for ChatGPT Project source upload and company PC repo alignment",
+    "Add DOMAIN_NOTES/TOUCHSTONE_SPARAM_NOTE.md as an O/X checklist and evidence boundary, not a parser specification",
+    "Add DOMAIN_NOTES/CST_SCHEMATIC_AUTOMATION_NOTE.md as CST schematic automation boundary guidance, not implementation code",
+    "Add TOOL_NOTES/README.md and CONCEPT_NOTES/README.md templates",
+    "Update README.md and CURRENT_PROGRESS.md to v0.5.4",
+    "Strengthen validate_mvp_school.py with NOTE_REGISTRY and PROJECT_SOURCE_INDEX structural checks",
+    "Regenerate MANIFEST_SHA256.txt"
+  ],
+  "protected_files_not_changed": [
+    "GPT_PROJECT_INSTRUCTIONS.md",
+    "SCHOOL_RULES.md",
+    "AUDIT_CHECKLIST.md",
+    "PERFORMANCE_SCORECARD.md",
+    "IDEA_CARD.md",
+    "MVP_PLAN.md",
+    "LOCAL_HANDOFF.md",
+    "EVIDENCE_GUIDE.md"
+  ],
+  "validation": {
+    "validator": "tools/validate_mvp_school.py",
+    "final_result": "pass",
+    "commands": [
+      "python mvp_school/tools/validate_mvp_school.py mvp_school"
+    ],
+    "scope": [
+      "required files",
+      "README references",
+      "minimum content markers",
+      "NOTE_REGISTRY registered note file existence",
+      "PROJECT_SOURCE_INDEX P0/P1 core file existence"
+    ],
+    "attempts": [
+      {
+        "attempt": 1,
+        "result": "fail",
+        "reason": "Content marker capitalization mismatch for Touchstone reference impedance marker",
+        "action": "Adjusted validator marker to match the checklist wording; no protected source-of-truth files were changed"
+      },
+      {
+        "attempt": 2,
+        "result": "pass"
+      }
+    ],
+    "retry_count": 1,
+    "retry_limit": 1
+  },
+  "validator_limitations": [
+    "Content marker check is a keyword-based minimum drift detection mechanism only.",
+    "Validator PASS does not prove semantic correctness, domain validity, CST/S2P execution readiness, Touchstone parser correctness, or physical accuracy.",
+    "Validator does not perform secret scanning, schema validation, regression testing, parser validation, physics validation, or enterprise governance checks."
+  ],
+  "known_limitations": [
+    "This package has not yet been applied to a real MVP idea.",
+    "TOUCHSTONE_SPARAM_NOTE.md is intentionally limited to an O/X pre-MVP checklist and excludes parser algorithms or physical pass/fail logic.",
+    "CST_SCHEMATIC_AUTOMATION_NOTE.md is a boundary note and does not prove CST execution or CST API compatibility.",
+    "ChatGPT Project can only prioritize mvp_school files if they are uploaded as project reference files or provided in the conversation.",
+    "Folder-structured files such as DOMAIN_NOTES, TOOL_NOTES, CONCEPT_NOTES, examples, and tools must be preserved in the company PC/repo package for local validation."
+  ],
+  "audit": {
+    "blocker": [],
+    "major": [],
+    "low": [
+      "NOTE_REGISTRY.md must be maintained whenever new note files are added.",
+      "PROJECT_SOURCE_INDEX.md upload priorities may need revision after real project usage.",
+      "Validator remains intentionally minimal and cannot replace independent audit."
+    ],
+    "judgment": "pass_with_known_limitations"
+  },
+  "next_actions": [
+    "Upload PROJECT_SOURCE_INDEX.md and NOTE_REGISTRY.md to the ChatGPT Project if note-based work is expected.",
+    "Use TOUCHSTONE_SPARAM_NOTE.md before S2P/Touchstone parser MVP planning, but do not treat it as a parser spec.",
+    "Use CST_SCHEMATIC_AUTOMATION_NOTE.md before CST automation MVP planning, but keep CST execution as a separate approved plan.",
+    "Apply the package to one real MVP idea as a pilot."
+  ]
+}
