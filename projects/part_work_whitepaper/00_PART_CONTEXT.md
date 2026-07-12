@@ -22,6 +22,22 @@
 Topic Card / Registry / Decision Log 구조로 흡수한다 (Stable Spine 원칙, `01_PART_WORK_
 WHITEPAPER.md` 참조).
 
+## v1 MVP 목표 (2026-07-12 명확화)
+
+v1에서 직접 만드는 것은 **AI agent가 아니다.** v1은 업무를 원자 단위(Topic Card 하나 = 업무
+하나)로 정리해서, **AI가 나중에 접근·검색·수정·재사용하기 쉬운 구조**를 만드는 데 집중한다.
+구체적으로는:
+
+- 업무 하나하나가 독립적으로 조회·인용 가능한 단위(Topic Card, ID 부여)로 쪼개져 있는가
+- AI가 어디를 봐야 할지 스스로 찾을 수 있는가 (AI_CONTEXT.md, Registry 구조)
+- 나중에 수정·갱신할 때 다른 부분을 안 건드리고 그 항목만 고칠 수 있는가 (append-only 원칙,
+  `WRITING_METHODOLOGY.md`)
+
+**Agent 생성 자체는 장기 목표**로 별도 관리한다 — v1이 만드는 원자화된 구조가 갖춰진 뒤,
+그 위에서 업무 효율화 agent를 만드는 것이 다음 단계다. 백서 제작 과정 자체도 가능한 한
+agentic(사람의 반복 입력을 최소화하는 방식)으로 진행한다는 원칙은 v1부터 적용한다
+(`WRITING_METHODOLOGY.md` B/C절, `ROADMAP.md` 참조).
+
 ## v1 범위 안내
 
 이 문서 묶음은 최종 운영 확정안이 아니라 **부서 회의 전 감사·논의용 초안**이다. 상세 판단

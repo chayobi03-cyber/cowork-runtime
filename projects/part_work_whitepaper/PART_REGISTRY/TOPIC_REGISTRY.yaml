@@ -35,5 +35,5 @@ topics:
     company_only_validation: null
     external_ai_safety: null
     status: hold                     # v1 MVP 범위 밖으로 명시적 보류 — 별도 프로젝트로 진행 필요
-    next_action: "v1 백서 MVP 완료 및 회의 이후, 별도 프로젝트(자동화 도구 제작)로 분리 착수 여부 판단"
+    next_action: "M2 착수 조건(ROADMAP.md 참조: v1 회의 통과 + 별도 프로젝트 승인) 충족 전까지 보류"
     last_updated: "2026-07-12"
