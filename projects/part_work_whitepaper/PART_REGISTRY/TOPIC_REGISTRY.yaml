@@ -24,3 +24,16 @@ topics:
 # 신규 등록 시 이 샘플 행을 복제하지 말고, 실제 Topic Card 내용을 기반으로 새 항목을 추가한다.
 # company_only_validation / external_ai_safety는 EXPORT_SAFETY_CHECKLIST.md 통과 후에만 값을 채운다.
 # ※ TOPIC-0001은 P2-01(음성→Card) 파이프라인 검증용 가상 데이터다. 실제 등록이 아니다.
+
+  - topic_id: TOPIC-0002
+    topic_name: "입력 전처리 자동화 도구 (음성 전사 / 화면녹화 프레임 추출)"
+    subpart: ""
+    problem: "음성/화면녹화 입력이 Claude에 조건부 지원만 됨 — 음성은 사람이 먼저 텍스트 전사, 화면녹화는 사람이 핵심 장면을 스크린샷으로 미리 추출해야 하는 수작업 단계가 남아있음 (WRITING_METHODOLOGY.md C-03/C-05 참조)"
+    representative_input: "음성 녹음 파일 / 화면 녹화 영상 파일"
+    representative_output: "전사된 텍스트 / 핵심 장면 스크린샷 세트"
+    candidate_mvp: false
+    company_only_validation: null
+    external_ai_safety: null
+    status: hold                     # v1 MVP 범위 밖으로 명시적 보류 — 별도 프로젝트로 진행 필요
+    next_action: "v1 백서 MVP 완료 및 회의 이후, 별도 프로젝트(자동화 도구 제작)로 분리 착수 여부 판단"
+    last_updated: "2026-07-12"
