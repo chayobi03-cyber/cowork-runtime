@@ -29,6 +29,9 @@ output_style:
 
 rules_source: rules/coworkai_detailed_rules.md
 rules_version: v10
+base_instructions: templates/base_instructions.md
+bindings_dir: bindings/
+decision_log: DECISIONS.md
 
 notes: >
   Never claim implementation unless executable artifacts actually exist.
