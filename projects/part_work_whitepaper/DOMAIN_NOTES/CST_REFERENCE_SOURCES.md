@@ -44,6 +44,7 @@
 | Reaffirm Signal Integrity Using S-Parameter Simulation | Cadence | 임피던스 매칭·반사 해석 | S-Parameter 실무 예시 |
 | Signal Integrity Testing: Tools for High-Speed PCB Validation | AllPCB | TDR·de-embedding 등 측정-시뮬레이션 상관관계 실무 팁 | 검증 단계 참고 |
 | CST VBA Macro Language 미러 | mweda.com | CST 구버전 VBA 레퍼런스 미러(공식 도움말 보완용) | 공식 문서 접근 안 될 때 대체 |
+| CST MICROWAVE STUDIO Workflow & Solver Overview (2008판) | rose-hulman.edu 미러(대학 강의자료) | "Which Solver to Use" 표, 포트 선택 기준 등 CST 구버전 공식 매뉴얼 전문 | 솔버선택/포트선택 판단기준 근거 (TOPIC-0003 4단계) |
 
 ---
 
