@@ -53,7 +53,7 @@ CST Overview Help.pdf의 "Perform an Electromagnetic Simulation" 8단계와 4개
 | 필드 | 내용 |
 |---|---|
 | 핵심 항목 | Excitation Source, Waveguide Port, Discrete Port, Multipin Port, Field Source 등 |
-| 판단 기준 | **Discrete Port**: 임피던스를 미리 아는 경우(예: 50Ω 마이크로스트립)에 적합, 정의가 간단. **Waveguide Port**: 임피던스를 모르거나 실제 전파모드 기반 여기가 필요할 때 우선 선택 — Hexahedral 솔버는 포트가 좌표축(X/Y/Z)에 정렬돼야 하고, Tetrahedral 솔버는 비정렬(회전된) 포트도 지원. **Multipin Port**: 여러 도체가 가까이 붙어 개별 포트로 분리 안 되는 경우(차동쌍, 신호선+그라운드 있는 CPW 등) — 신호선(+)/그라운드(-)로 극성 지정 |
+| 판단 기준 | **[잠정 — 구버전 기준, 최신문서 재검증 필요]** **Discrete Port**: 임피던스를 미리 아는 경우(예: 50Ω 마이크로스트립)에 적합, 정의가 간단. **Waveguide Port**: 임피던스를 모르거나 실제 전파모드 기반 여기가 필요할 때 우선 선택 — Hexahedral 솔버는 포트가 좌표축(X/Y/Z)에 정렬돼야 하고, Tetrahedral 솔버는 비정렬(회전된) 포트도 지원. **Multipin Port**: 여러 도체가 가까이 붙어 개별 포트로 분리 안 되는 경우(차동쌍, 신호선+그라운드 있는 CPW 등) — 신호선(+)/그라운드(-)로 극성 지정 |
 | 흔한 실수 | Discrete↔Waveguide Port를 바꿨을 때 S11 결과가 달라지는 이유를 모르고 임의 선택함 — Discrete Port 주변 필드는 실제 전파모드와 달라 원치 않는 고차모드까지 함께 여기되기 때문. Hexahedral 솔버에서 포트를 축에 정렬하지 않고 사용(회전된 구조에서 특히 발생). Multipin 정의 시 포트 면적을 너무 크거나 작게 잡음 |
 | 업무별 특화 슬롯 | 이 업무에서 주로 쓰는 Port 종류와 그 이유 |
 
@@ -62,7 +62,7 @@ CST Overview Help.pdf의 "Perform an Electromagnetic Simulation" 8단계와 4개
 | 필드 | 내용 |
 |---|---|
 | 핵심 항목 | "Which Solver to Use" 판단, Time Domain / Frequency Domain / Eigenmode / Integral Equation / Multilayer / Asymptotic Solver 중 선택 |
-| 판단 기준 | **"Which Solver to Use" 가이드라인표** (출처: CST Workflow & Solver Overview 매뉴얼, rose-hulman.edu 미러, 2026-07-13 확인 — "규칙이 아니라 가이드라인"으로 명시됨):<br>· 커넥터/PCB/디지털회로/EMI/방사문제 → Transient<br>· 스트립라인/패치안테나/필터 → Transient 또는 General Purpose Frequency Domain<br>· 공진기(cavity)/진행파 구조 → Eigenmode<br>· 전기적으로 큰 구조(안테나 배치, RCS) → Integral Equation 또는 Transient<br>**강제 규칙(예외 아님, 반드시 지켜야 함)**:<br>1. 비선형 다이오드 포함 → Frequency Domain 불가, 반드시 Transient<br>2. 메쉬 수백만 셀 이상(전기적으로 매우 큼) → Frequency Domain은 급격히 느려짐, Transient 또는 Integral Equation<br>3. 위상차 있는 주기구조 → Transient는 위상차 0인 주기구조만 가능, 반드시 Frequency Domain<br>4. 손실 있는 도파관 포트의 S-parameter → Frequency Domain (손실 포트 모드 계산 가능) |
+| 판단 기준 | **[잠정 — 구버전 기준, 최신문서 재검증 필요]** **"Which Solver to Use" 가이드라인표** (출처: CST Workflow & Solver Overview 매뉴얼, rose-hulman.edu 미러, 2026-07-13 확인 — "규칙이 아니라 가이드라인"으로 명시됨):<br>· 커넥터/PCB/디지털회로/EMI/방사문제 → Transient<br>· 스트립라인/패치안테나/필터 → Transient 또는 General Purpose Frequency Domain<br>· 공진기(cavity)/진행파 구조 → Eigenmode<br>· 전기적으로 큰 구조(안테나 배치, RCS) → Integral Equation 또는 Transient<br>**강제 규칙(예외 아님, 반드시 지켜야 함)**:<br>1. 비선형 다이오드 포함 → Frequency Domain 불가, 반드시 Transient<br>2. 메쉬 수백만 셀 이상(전기적으로 매우 큼) → Frequency Domain은 급격히 느려짐, Transient 또는 Integral Equation<br>3. 위상차 있는 주기구조 → Transient는 위상차 0인 주기구조만 가능, 반드시 Frequency Domain<br>4. 손실 있는 도파관 포트의 S-parameter → Frequency Domain (손실 포트 모드 계산 가능) |
 | 흔한 실수 | 표를 "규칙"으로 오인해 예외 상황(원문에 "구조에 따라 표에 없는 솔버가 더 효율적일 수 있음"이라고 명시됨)을 고려 안 함. 강제 규칙 4가지(비선형/대형구조/위상차 주기구조/손실포트) 위반 — 예: 비선형 다이오드 구조에 Frequency Domain 솔버를 시도해 계산 자체가 성립하지 않음 |
 | 업무별 특화 슬롯 | 이 업무에서 표준으로 쓰는 솔버 + 그 이유 |
 

@@ -55,6 +55,6 @@ topics:
     company_only_validation: null
     external_ai_safety: null
     status: under_review             # 부서 대표안건으로 이미 Admit됨 — 방법론 작성 진행 중
-    next_action: "COMMON_METHOD/ 에 5단계(모델링/메쉬/소스포트/솔버설정/Post-Processing) 방법론 문서 작성은 Claude가 직접 이어감. 원문(50MB+73MB) 전체 대조 기반 상세 작업은 WP-0001 자체가 School 졸업(4.4 Scorecard/4.5 BLOCKER 판정 통과)하는 시점에 별도 AI로 위임 예정 — 그 전까지 위임하지 않는다."
+    next_action: "COMMON_METHOD/ 5단계 뼈대 중 3·4단계(포트/솔버선택)는 구버전(2008판) 매뉴얼 기준으로 잠정 확인 완료 — 최신 CST 공식 문서 대조 재검증 필요(확정본 아님). 1단계 재질/BC 판단기준은 파트원 인터뷰로 채울 예정. 원문(50MB+73MB) 전체 대조 상세작업은 WP-0001 School 졸업 시점에 위임"
     last_updated: "2026-07-13"
     judge: "창엽님 (현재 기준 — 회의에서 판정 주체 중 일부만 확정, 추후 보완 예정)"
