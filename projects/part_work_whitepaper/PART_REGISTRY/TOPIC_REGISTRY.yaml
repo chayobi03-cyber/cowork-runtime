@@ -4,13 +4,18 @@
 #
 # status 값: candidate(접수) / under_review(검토중) / needs_changes / approved / rejected / hold
 #   ※ status=candidate 는 "구현됨"을 의미하지 않는다 (AI_CONTEXT.md 금지추론 목록 참조)
+#
+# schema_version: v2에서 parent_topic_id 필드 추가 (2026-07-13, 부서 회의 후속)
+#   - null: 독립 Topic이거나, 다른 Topic들의 "공통부분" 역할을 하는 부모 Topic
+#   - TOPIC-xxxx: 해당 부모 Topic 아래 딸린 업무별 특화 Topic (소파트 기준이 아니라 업무 기준으로 계속 추가됨)
 
-schema_version: v1
+schema_version: v2
 
 topics:
   - topic_id: TOPIC-0001
     topic_name: "주간 시험 데이터 정리 및 그래프화 (P2-01 음성 시범 결과 — 가상 데이터)"
     subpart: ""                      # 관련 소파트 (미정 시 공란 유지)
+    parent_topic_id: null
     problem: "매주 반복되는 수작업, 단위 오입력으로 인한 재작업 발생"
     representative_input: "시험 원시 데이터(엑셀)"
     representative_output: "단위 변환된 데이터 + 그래프"
@@ -28,6 +33,7 @@ topics:
   - topic_id: TOPIC-0002
     topic_name: "입력 전처리 자동화 도구 (음성 전사 / 화면녹화 프레임 추출)"
     subpart: ""
+    parent_topic_id: null
     problem: "음성/화면녹화 입력이 Claude에 조건부 지원만 됨 — 음성은 사람이 먼저 텍스트 전사, 화면녹화는 사람이 핵심 장면을 스크린샷으로 미리 추출해야 하는 수작업 단계가 남아있음 (WRITING_METHODOLOGY.md C-03/C-05 참조)"
     representative_input: "음성 녹음 파일 / 화면 녹화 영상 파일"
     representative_output: "전사된 텍스트 / 핵심 장면 스크린샷 세트"
@@ -37,3 +43,18 @@ topics:
     status: hold                     # v1 MVP 범위 밖으로 명시적 보류 — 별도 프로젝트로 진행 필요
     next_action: "M2 착수 조건(ROADMAP.md 참조: v1 회의 통과 + 별도 프로젝트 승인) 충족 전까지 보류"
     last_updated: "2026-07-12"
+
+  - topic_id: TOPIC-0003
+    topic_name: "CST 해석법 — 공통부분 (부서 대표안건)"
+    subpart: ""                      # 소파트 기준 아님 — 업무별 특화 카드는 parent_topic_id로 연결
+    parent_topic_id: null            # 이 Topic 자체가 부모(공통부분)
+    problem: "CST 시뮬레이션 해석(모델링→메쉬→소스/포트→솔버 설정→Post-Processing) 방법이 사람마다 달라 재작업·오판정 위험. 부서 회의에서 대표안건으로 선정됨"
+    representative_input: "CST Studio Suite 공식 Help 문서(Overview/3D Simulation Help 등, Drive 보관) + DOMAIN_NOTES/CST_REFERENCE_SOURCES.md 참조자료"
+    representative_output: "5단계 공통 해석 방법론 문서(COMMON_METHOD 예정) — 각 단계별 핵심지표/판단기준/흔한실수/업무특화 슬롯"
+    candidate_mvp: false
+    company_only_validation: null
+    external_ai_safety: null
+    status: under_review             # 부서 대표안건으로 이미 Admit됨 — 방법론 작성 진행 중
+    next_action: "COMMON_METHOD/ 에 5단계(모델링/메쉬/소스포트/솔버설정/Post-Processing) 방법론 문서 작성. 이후 업무별 특화 카드(parent_topic_id: TOPIC-0003)를 계속 접수"
+    last_updated: "2026-07-13"
+    judge: "창엽님 (현재 기준 — 회의에서 판정 주체 중 일부만 확정, 추후 보완 예정)"

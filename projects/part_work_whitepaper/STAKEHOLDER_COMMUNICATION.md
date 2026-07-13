@@ -20,7 +20,7 @@
 | **파트장 (3명)** | `DEPARTMENT_MEETING_AGENDA.md` 전체, `STRUCTURE_DECISION_OPTIONS.md` | Topic Card 작성법 세부 | 회의 참석, 소파트 반복업무 3개씩 사전 공유(Top5 질문 1번) |
 | **일반 파트원 (카드 작성만)** | `TOPIC_CARD_TEMPLATE.md`, 이 문서의 "카드 작성 안내" 절만 | Registry 스키마, 방법론 근거(A/B/C/D절) | Level A 카드 1분 작성, 정기 루틴에 맞춰(B-02 anchor) |
 | **챔피언 파트원 (1~2명, 미정)** | 위 전체 + `WRITING_METHODOLOGY.md` B-03(챔피언 사례) | Registry 직접 수정 권한(창엽님 담당) | 동료들에게 카드 작성 시연, 짧은 반복 노출 |
-| **Topic 판정 관여자** (주체는 회의에서 확정) | `TOPIC_REGISTRY.yaml` 해당 항목, `EXPORT_SAFETY_CHECKLIST.md` | 방법론 근거표 전체 | Approve/Reject/Needs changes 판정 |
+| **Topic 판정 관여자** (현재 기준: 창엽님 — 회의에서 일부만 확정, 추후 보완 예정) | `TOPIC_REGISTRY.yaml` 해당 항목, `EXPORT_SAFETY_CHECKLIST.md` | 방법론 근거표 전체 | Approve/Reject/Needs changes 판정 |
 
 ## 소파트별 안내 (3개 소파트, 내용은 회의 후 채움)
 
