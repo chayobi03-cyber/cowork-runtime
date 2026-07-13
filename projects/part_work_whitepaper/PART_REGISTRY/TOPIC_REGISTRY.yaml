@@ -55,11 +55,11 @@ topics:
     parent_topic_id: null            # 이 Topic 자체가 부모(공통부분)
     problem: "CST 시뮬레이션 해석(모델링→메쉬→소스/포트→솔버 설정→Post-Processing) 방법이 사람마다 달라 재작업·오판정 위험. 부서 회의에서 대표안건으로 선정됨"
     representative_input: "CST Studio Suite 공식 Help 문서(Overview/3D Simulation Help 등, Drive 보관) + DOMAIN_NOTES/CST_REFERENCE_SOURCES.md 참조자료"
-    representative_output: "5단계 공통 해석 방법론 문서(COMMON_METHOD 예정) — 각 단계별 핵심지표/판단기준/흔한실수/업무특화 슬롯"
+    representative_output: "COMMON_METHOD/CST_INTERPRETATION_COMMON_METHOD.md (작성 진행 중 — 5단계 뼈대 완료, 1단계 판단기준·이미지구조는 미완)"
     candidate_mvp: false
     company_only_validation: null
     external_ai_safety: null
     status: under_review             # 부서 대표안건으로 이미 Admit됨 — 방법론 작성 진행 중
-    next_action: "COMMON_METHOD/ 5단계 뼈대 중 3·4단계(포트/솔버선택)는 구버전(2008판) 매뉴얼 기준으로 잠정 확인 완료 — 최신 CST 공식 문서 대조 재검증 필요(확정본 아님). 1단계 재질/BC 판단기준은 파트원 인터뷰로 채울 예정. 원문(50MB+73MB) 전체 대조 상세작업은 WP-0001 School 졸업 시점에 위임"
+    next_action: "COMMON_METHOD 뼈대 이어작성 + 1단계 판단기준(파트원 인터뷰 필요) + 3·4단계 재검증. 상세는 CLAUDE_MAINTENANCE_LOG.md 2026-07-13 항목들 참조. 원문 전체대조는 WP-0001 School 졸업 시점 위임"
     last_updated: "2026-07-13"
     judge: "창엽님 (현재 기준 — 회의에서 판정 주체 중 일부만 확정, 추후 보완 예정)"
