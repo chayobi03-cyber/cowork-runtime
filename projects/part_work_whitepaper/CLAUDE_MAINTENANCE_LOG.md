@@ -207,3 +207,37 @@
 **다음 세션 확인할 것**
 - 소파트별 절(현재 전부 미정)은 회의에서 파트장 답변이 나오면 채운다
 - SHARED_FOLDER_AUTOMATION 실행 주체는 사내 시스템 확인 전까지 결정 보류 상태 유지
+
+## 2026-07-13 — 부서 회의 완료, TOPIC-0003(CST 해석법) 등록
+
+**변경 사항**
+- 부서 회의 완료. 대표안건 = CST 해석법(모델링→메쉬→소스/포트→솔버설정→Post-Processing).
+  판정 주체는 현재 기준 창엽님(회의에서 일부만 확정) — `STAKEHOLDER_COMMUNICATION.md` 반영
+- `TOPIC_REGISTRY.yaml` schema v1→v2: `parent_topic_id` 필드 신설 (소파트가 아니라 업무 단위로
+  계속 늘어나는 특화 카드를 공통 카드에 연결하기 위함)
+- `TOPIC-0003`(CST 해석법 — 공통부분) 신규 등록, status: under_review
+- `DOMAIN_NOTES/CST_REFERENCE_SOURCES.md` 신설 — CST 관련 작업 시 참고할 학계/오픈소스/실무
+  사이트 위키형 참조문서 (Research Track, 특정 Topic에 종속되지 않음)
+
+**설계 의도 / 결정 사항**
+- CST 원문(Overview Help.pdf 등)의 TOC + Ribbon 구조(Modeling/Mesh/Simulation/Post-Processing)를
+  공통부분 방법론의 뼈대로 채택 — CST 자체 UI 워크플로우를 그대로 활용
+- **외부 AI 위임 시점 확정**: 원문(50MB+73MB) 전체 대조 기반 상세 방법론 작성은 지금 위임하지
+  않는다. WP-0001 자체가 School 졸업(4.4 Scorecard/4.5 BLOCKER 판정 통과)하는 시점에 위임한다.
+  그 전까지 방법론 뼈대 작업은 Claude가 계속 이어간다.
+- **뼈대만으로 진행 가능한지 검토 결과**: 졸업 판정 자체는 TOPIC-0003 내용 완성도가 아니라 M0
+  완료조건(부서회의 통과 + 실제 카드 입력 확인, ROADMAP.md)을 보므로 문제없음. 다만 **뼈대가
+  실제 파트원의 업무별 특화 카드 작성을 지원할 만큼은 되는지**는 별도 확인이 필요 — "원문 전체
+  반영 여부"가 아니라 "이 뼈대만 보고 실제 카드 1건이라도 나올 수 있는가"가 기준. 이 조건은 M0
+  evidence(실제 카드 입력) 확인 시 함께 검증한다.
+
+**의도적으로 하지 않은 것**
+- COMMON_METHOD/에 5단계 상세 방법론 문서 아직 작성 안 함 (뼈대만 확정, 본문은 다음 세션)
+- 업무별 특화 카드(parent_topic_id: TOPIC-0003) 아직 접수 시작 안 함
+
+**다음 세션 확인할 것**
+- COMMON_METHOD/CST_INTERPRETATION_COMMON_METHOD.md 초안 작성 이어가기
+- WP-0001 School 졸업 판정(Scorecard/BLOCKER) 진행 상황 — 위임 시점 판단 기준
+- 실제 파트원 카드 입력(M0 evidence) 확인 시, 뼈대 수준으로 카드 작성이 실제로 됐는지 함께 확인
+  (안 되면 뼈대 보강 필요 — 원문 전체 대조가 아니라 뼈대 자체의 실사용 가능성 문제로 처리)
+
