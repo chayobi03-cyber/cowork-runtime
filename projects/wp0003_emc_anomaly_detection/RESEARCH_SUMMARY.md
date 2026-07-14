@@ -142,19 +142,93 @@ def isolation_forest_scores(df, cols, contamination=0.05, random_state=42):
     flag = model.predict(Xs) == -1
     return score, flag, model, scaler
 
-# ===== 사용 예 =====
-# bands = [(1.0, 4.0), (4.0, 7.0), (7.0, 10.0)]
+# ===== 사용 예 (2026-07-15 갱신: 실제 관심 주파수 대역 + MAD 취약점 수정 반영) =====
+# 관심 대역: 1차 30MHz~1GHz, 2차 1GHz~3GHz, 3차 3GHz~10GHz
+# bands = [(0.03, 1.0), (1.0, 3.0), (3.0, 10.0)]
 # df = build_dataset("sim_results", pattern="*.s2p", target="S21", bands=bands)
-# feature_cols = [c for c in df.columns if c != "file"]
-# df["mad_score"], df["mad_flag"] = mad_scores(df, feature_cols)
-# df["if_score"], df["if_flag"], _, _ = isolation_forest_scores(df, feature_cols)
+# all_cols = [c for c in df.columns if c != "file"]
+# FIX(2026-07-15): MAD는 저분산/이산적 feature(n_peaks, max_peak_prominence)를 제외한 연속형만 사용.
+# 이 두 feature를 포함하면 실제 데이터에서 오탐률이 20%까지 치솟음(섹션6 참조). Isolation Forest는
+# 전체 feature를 그대로 사용해도 안정적(오탐 0%) — 주 판정 기준으로 권장, MAD는 보조 참고용.
+# mad_cols = [c for c in all_cols if c not in ("n_peaks", "max_peak_prominence")]
+# df["mad_score"], df["mad_flag"] = mad_scores(df, mad_cols)
+# df["if_score"], df["if_flag"], _, _ = isolation_forest_scores(df, all_cols)
 # df.sort_values("if_score", ascending=False).to_csv("emc_anomaly_report.csv", index=False)
+#
+# 주의: 입력 파일의 실제 주파수 범위가 위 관심 대역과 전혀 안 겹치면 band별 feature가 전부 NaN이
+# 되어 StandardScaler에서 경고 발생(섹션6 발견2). 실행 전 주파수 범위 겹침 여부를 확인할 것.
 ```
 
 **리포트 생성(plotly)을 붙일 경우**: `save_report()`에서 `color="flag"` 대신 `color="if_flag"` 또는 `color="mad_flag"`로 명시할 것 (원본 코드의 컬럼명 불일치 버그 수정).
 
 ---
 
-## 5. 다음 단계 (roster WP-0003 다음액션과 동일)
+## 5. 관심 주파수 대역 (2026-07-15 확정)
 
-MVP Plan 작성(Plan-first) → 4.3 범위판정 확인 → 냉정 Audit(섹션1 14항목)
+- 1차: 30MHz ~ 1GHz
+- 2차: 1GHz ~ 3GHz
+- 3차: 3GHz ~ 10GHz
+
+feature 추출 시 `bands = [(0.03, 1.0), (1.0, 3.0), (3.0, 10.0)]` (GHz 단위)로 고정.
+
+---
+
+## 6. 추가 검증 (2026-07-15): 실제 곡선 기반 재검증
+
+기존 검증(섹션3)은 사인함수 기반 **합성** S-parameter로만 진행돼 "너무 깔끔한 데이터"라는 audit
+지적(MAJOR-4)이 있었음. 이를 보완하기 위해 `scikit-rf` 패키지에 번들로 포함된 **실제 시뮬레이션
+데이터**(`ring slot.s2p`, 안테나 S-parameter, 75~110GHz, 완전 공개·회사 데이터 아님)를 기반으로,
+현실적 산포(주파수 미세 이동 ±0.15GHz + 약한 노이즈)를 더한 정상 20건 + 명백한 이상 3건(공진
+대폭 이동/스파이크/완전 평탄화)으로 재검증.
+
+### 발견 1: MAD 조합 방식의 실제 취약점
+
+정상 20건 중 4건(20%)이 MAD 방식에서 오탐 발생. 원인 추적 결과, `max_peak_prominence`(피크 크기)
+feature가 문제였음 — 우연히 `scipy.find_peaks`가 피크를 하나도 못 찾은 파일 3건에서 이 값이 0.0이
+됐는데, 이 feature 자체의 전체 산포(MAD)가 매우 작아서(0.0836) 작은 절대편차가 z-score 9.17이라는
+극단값을 만들었음. **MAD는 "전체 feature 중 최대 z-score"로 판정하므로, 저분산 feature 하나가
+전체 판정을 왜곡할 수 있음.**
+
+**합성(사인곡선) 데이터에서는 이 문제가 안 보였음** — `find_peaks`가 항상 안정적으로 피크를 찾아서
+`max_peak_prominence`가 0이 되는 경우가 없었기 때문. 실제 물리 데이터를 쓰고 나서야 드러난 문제.
+
+**Isolation Forest는 이 문제에 영향받지 않음** (오탐 0/20 유지) — 여러 feature를 tree 분할로 종합
+판단하므로 단일 feature 취약점에 강건함.
+
+### 수정안 및 재검증 결과
+
+MAD 계산에서 이산적/저분산 feature(`n_peaks`, `max_peak_prominence`)를 제외하고 연속형 feature만
+사용하도록 수정. Isolation Forest는 전체 feature 유지.
+
+| | 수정 전 | 수정 후 |
+|---|---|---|
+| 이상 3건 탐지 (IF/MAD) | 100%/100% | 100%/100% (유지) |
+| 정상 20건 오탐 (IF) | 0건 | 0건 (유지) |
+| 정상 20건 오탐 (MAD) | 4건(20%) | **1건(5%)** — 개선됐으나 완전 해결 아님 |
+
+잔여 오탐 1건(`normal_11`)은 `f_max_db_ghz`(최대값이 나타난 주파수) feature가 원인 — 이 역시
+저분산 feature의 구조적 한계로, MAD 방식 자체의 근본적 취약점(이산적이거나 좁은 분포를 갖는
+feature에 약하다)을 보여줌.
+
+**권장**: Isolation Forest를 주 판정 기준으로, MAD는 보조 참고용(1차 경보)으로 격하해서 운용.
+
+### 발견 2: 관심 대역이 실제 파일의 주파수 범위 밖이면 전체 NaN
+
+`ring slot.s2p`가 75~110GHz인데 관심 대역을 30MHz~10GHz로 설정하면, band별 feature(band0_mean 등)
+가 **전체 행에서 NaN**이 됨. 코드 자체는 크래시하지 않았으나(`np.nan` 채움 로직이 있어서), 이후
+`StandardScaler`에서 `RuntimeWarning: invalid value encountered in divide`가 발생함 — 전부 NaN인
+컬럼을 표준화하려 하면서 나온 경고.
+
+**실사용 시 필요한 안전장치**: 파이프라인 실행 전, 각 입력 파일의 주파수 범위가 정의된 관심 대역과
+최소한 일부라도 겹치는지 사전 검증하는 로직 추가 필요. (이번 재검증은 대역 정의 로직 자체가
+크래시 없이 동작하는지 확인하는 목적이었고, 실제 대역별 통계치 자체는 이번 실제-곡선 테스트에서는
+검증되지 못함 — ring slot 예제의 주파수 범위가 관심 대역과 안 겹쳤기 때문. 이 부분은 실제 회사
+CST 데이터로 재검증 시 확인 필요.)
+
+---
+
+## 7. 다음 단계 (MVP Plan과 동일, 갱신됨)
+
+MVP Plan 작성 완료(WP-0003_MVP_Plan.md) → 실제 CST 데이터로 1차 검증(사내 실행, 결과만 공유) →
+냉정 Audit 재실행. 이번 재검증에서 나온 MAD 취약점 수정안과 대역 사전검증 로직을 실제 데이터
+검증 단계에 반영할 것.
