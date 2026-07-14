@@ -23,8 +23,14 @@
     "Report Draft Builder",
     "Generated Artifact Validation"
   ],
-  "updated_at": "2026-07-12T00:00:00Z",
-  "version": "0.4.2",
+  "updated_at": "2026-07-14T00:00:00Z",
+  "version": "0.4.3",
+  "consolidated_in_v0_4_3": [
+    "scripts/validate_artifacts.py: merged validate_generated_artifacts.py and validate_tool_contracts.py into one glob-based validator (run twice per README: once before run_case.py, once after)",
+    "scripts/validate_generated_artifacts.py: removed, superseded by scripts/validate_artifacts.py",
+    "scripts/validate_tool_contracts.py: removed, superseded by scripts/validate_artifacts.py",
+    "bugfix found during consolidation: old validate_artifacts.py hardcoded only 1 of 6 data/sample/tool_contracts/*.json fixtures (TOOL-S2P-ANALYZER.json); the other 5 (ANNOTATION-PARSER, CONSTRAINT-CHECKER, REPORT-DATA-BUILDER, SIMPLE-EVALUATOR, SIMPLE-RAG-RETRIEVER) were never schema-checked. Glob pattern now covers all 6."
+  ],
   "added_in_v0_4_2": [
     "tools/simple_evaluator.py: criteria now read upstream tool judgment values",
     "tests/test_simple_evaluator.py"

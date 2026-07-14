@@ -31,7 +31,7 @@ ChatGPT Project sources may be uploaded as flat individual files, while the comp
 | P2 | NOTE_REGISTRY.md | mvp_school/NOTE_REGISTRY.md | Recommended | Note files may be hard to discover | Upload when using domain/tool/concept notes |
 | P2 | PROJECT_SOURCE_INDEX.md | mvp_school/PROJECT_SOURCE_INDEX.md | Recommended | Flat upload vs repo structure may drift | This file |
 | P2 | PROJECT_UPLOAD_GUIDE.md | mvp_school/PROJECT_UPLOAD_GUIDE.md | Recommended | Upload workflow may be unclear | Operational guide |
-| P2 | DOMAIN_NOTES/EMC_S2P_CST_NOTE.md | mvp_school/DOMAIN_NOTES/EMC_S2P_CST_NOTE.md | When relevant | EMC/S2P/CST domain boundaries may be unavailable | Supporting note |
+| P3 | DOMAIN_NOTES/EMC_S2P_CST_NOTE.md | mvp_school/DOMAIN_NOTES/EMC_S2P_CST_NOTE.md | No — deprecated | N/A | Deprecated 2026-07-14; see TOUCHSTONE_SPARAM_NOTE.md / CST_SCHEMATIC_AUTOMATION_NOTE.md instead |
 | P2 | DOMAIN_NOTES/TOUCHSTONE_SPARAM_NOTE.md | mvp_school/DOMAIN_NOTES/TOUCHSTONE_SPARAM_NOTE.md | When relevant | Touchstone pre-MVP checklist may be unavailable | Checklist only, not parser spec |
 | P2 | DOMAIN_NOTES/CST_SCHEMATIC_AUTOMATION_NOTE.md | mvp_school/DOMAIN_NOTES/CST_SCHEMATIC_AUTOMATION_NOTE.md | When relevant | CST automation boundaries may be unavailable | Draft supporting note |
 | P3 | run_report.json | mvp_school/run_report.json | Optional | Latest package validation evidence may be unavailable | Evidence record, not source of truth |

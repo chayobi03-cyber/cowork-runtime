@@ -55,7 +55,7 @@ mvp_school/
   tools/
     validate_mvp_school.py
   DOMAIN_NOTES/
-    EMC_S2P_CST_NOTE.md
+    EMC_S2P_CST_NOTE.md (deprecated 2026-07-14, see NOTE_REGISTRY.md)
     DOC_RAG_KG_NOTE.md
     TOUCHSTONE_SPARAM_NOTE.md
     CST_SCHEMATIC_AUTOMATION_NOTE.md

@@ -31,9 +31,13 @@ PROJECT_SOURCE_INDEX.md
 도메인 작업을 진행할 때만 아래 파일을 추가 업로드한다.
 
 ```text
-DOMAIN_NOTES/EMC_S2P_CST_NOTE.md
+DOMAIN_NOTES/TOUCHSTONE_SPARAM_NOTE.md
+DOMAIN_NOTES/CST_SCHEMATIC_AUTOMATION_NOTE.md
 DOMAIN_NOTES/DOC_RAG_KG_NOTE.md
 ```
+
+(`DOMAIN_NOTES/EMC_S2P_CST_NOTE.md`는 2026-07-14 deprecated 처리되어 더 이상 업로드 목록에
+포함하지 않는다. NOTE_REGISTRY.md 참조.)
 
 ## 3. 회사 PC / repo 적용
 

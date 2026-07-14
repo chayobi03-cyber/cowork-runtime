@@ -125,9 +125,13 @@ Stop after producing the plan and ask for approval.
 예:
 
 ```text
-DOMAIN_NOTES/EMC_S2P_CST_NOTE.md
+DOMAIN_NOTES/TOUCHSTONE_SPARAM_NOTE.md
+DOMAIN_NOTES/CST_SCHEMATIC_AUTOMATION_NOTE.md
 DOMAIN_NOTES/DOC_RAG_KG_NOTE.md
 ```
+
+(2026-07-14: 이전에는 여기서 `DOMAIN_NOTES/EMC_S2P_CST_NOTE.md`를 예시로 들었으나, 이 문서는
+S2P/CST 특화 노트 두 개와 내용이 겹쳐 deprecated 처리됐다. NOTE_REGISTRY.md 참조.)
 
 ## 8. 졸업 기준
 

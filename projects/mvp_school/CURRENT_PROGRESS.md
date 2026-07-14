@@ -265,3 +265,45 @@ Claude 독립 audit에서 지적된 다음 사항을 반영했다.
 ```text
 v0.5.4: NOTE Structure Patch PASS / validator structural checks added / 실제 아이디어 적용 전
 ```
+
+## v0.5.5 Domain Note Consolidation Patch
+
+Coworkai School(별개 시스템, Google Sheets roster 기반)의 창엽님이 "지금까지 진행된 School
+산출물들 기능이 비슷한데 통합 가능한가"라고 질의한 것을 계기로, Claude가 mvp_school/DOMAIN_NOTES/
+전체를 항목별로 대조했다.
+
+### 발견
+
+`EMC_S2P_CST_NOTE.md`(요약형, 한국어)가 `TOUCHSTONE_SPARAM_NOTE.md`(S2P/Touchstone 특화),
+`CST_SCHEMATIC_AUTOMATION_NOTE.md`(CST automation 특화), `examples/THIN_ORCHESTRATOR_EXAMPLE.md`
+(파이프라인 예시) 세 문서의 내용을 다른 형식으로 반복하고 있었다. 고유 내용이 사실상 없었다.
+
+### 상충 지점 발견 및 처리
+
+`EMC_S2P_CST_NOTE.md` 3절의 "reciprocity/passivity 가능성" 체크 항목이 `TOUCHSTONE_SPARAM_NOTE.md`
+의 명시적 범위 제외(passivity correction/causality fitting)와 상충 여지가 있었다. Claude는 이걸
+임의로 병합/판단하지 않고 사용자에게 확인을 요청했고, **범위 제외로 확정**됐다(추가 항목 없이
+TOUCHSTONE_SPARAM_NOTE.md의 기존 제외 범위 유지).
+
+### 조치
+
+1. `EMC_S2P_CST_NOTE.md`: 내용을 deprecated 안내 + 대체 문서 pointer로 교체 (파일 자체는 유지 —
+   NOTE_REGISTRY.md의 "deprecated: kept for history" 상태 활용, 삭제하지 않음)
+2. `NOTE_REGISTRY.md`: 해당 행 상태 active → deprecated
+3. `SCHOOL_RULES.md`, `PROJECT_UPLOAD_GUIDE.md`: 예시/업로드 목록에서 deprecated 파일을
+   TOUCHSTONE_SPARAM_NOTE.md + CST_SCHEMATIC_AUTOMATION_NOTE.md로 교체
+4. `PROJECT_SOURCE_INDEX.md`: 우선순위 P2 → P3, upload 권장 여부 No로 변경
+5. `README.md`: 파일트리에 deprecated 표기 추가
+
+### 의도적으로 하지 않은 것
+
+- `TOUCHSTONE_SPARAM_NOTE.md`, `CST_SCHEMATIC_AUTOMATION_NOTE.md` 내용 수정 (두 문서는 도메인이
+  달라 병합하지 않음 — School 4.3 "하나의 입력/하나의 출력/하나의 테스트 경로" 원칙과 정합)
+- `EMC_S2P_CST_NOTE.md` 물리 삭제 (deprecated 상태로 이력 보존)
+- reciprocity/passivity 항목을 TOUCHSTONE_SPARAM_NOTE.md에 추가 (사용자가 범위 제외로 확정)
+
+### 상태
+
+```text
+v0.5.5: Domain Note Consolidation PASS / EMC_S2P_CST_NOTE.md deprecated / 5개 참조 문서 갱신 완료
+```

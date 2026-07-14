@@ -30,7 +30,7 @@ IDEA_CARD.md / MVP_PLAN.md / LOCAL_HANDOFF.md: working templates
 
 | Note file | Class | Purpose | Applies to | Status | Source-of-truth role |
 |---|---|---|---|---|---|
-| DOMAIN_NOTES/EMC_S2P_CST_NOTE.md | Domain | Existing minimum EMC/S2P/CST domain principles | EMC, S2P, CST MVPs | active | supporting note |
+| DOMAIN_NOTES/EMC_S2P_CST_NOTE.md | Domain | (deprecated 2026-07-14; content merged into TOUCHSTONE_SPARAM_NOTE.md, CST_SCHEMATIC_AUTOMATION_NOTE.md, examples/THIN_ORCHESTRATOR_EXAMPLE.md) | none — kept for history only | deprecated | do not use for new work |
 | DOMAIN_NOTES/DOC_RAG_KG_NOTE.md | Domain | Existing doc/RAG/KG domain principles | doc-rag, KG MVPs | active | supporting note |
 | DOMAIN_NOTES/TOUCHSTONE_SPARAM_NOTE.md | Domain | Touchstone/S-parameter pre-MVP checklist and evidence boundaries | S2P, Touchstone, CST import prep | active | supporting note |
 | DOMAIN_NOTES/CST_SCHEMATIC_AUTOMATION_NOTE.md | Domain | CST schematic automation boundaries and evidence checklist | CST automation MVPs | draft | supporting note |

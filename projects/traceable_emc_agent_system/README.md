@@ -20,16 +20,18 @@
 - `tools/report_data_builder.py`: 분석 결과를 EMC 보고서 초안 Markdown으로 생성
 - `tools/simple_evaluator.py`: 생성 산출물 존재/형식 기반 MVP 평가
 - `scripts/run_case.py`: Annotation → RAG → S2P → Constraint → Report → Evaluation 실행
-- `scripts/validate_generated_artifacts.py`: 생성 산출물 Schema 검증
+- `scripts/validate_artifacts.py`: 샘플/생성/tool_contracts 산출물 Schema 검증 (glob 기반, 2026-07-14
+  `validate_generated_artifacts.py`·`validate_tool_contracts.py` 통합. 아래 실행 방법처럼 두 번
+  돌리는 것이 의도된 사용법이다 — 1차는 사전 fixture 검증, 2차는 `run_case.py`가 만든 생성물 검증)
 
 ## 실행 방법
 
 ```bash
 python scripts/validate_json_schema.py
 python scripts/validate_node_registry.py
-python scripts/validate_artifacts.py
+python scripts/validate_artifacts.py   # 1차: 사전 fixture(샘플/tool_contracts) 검증
 python scripts/run_case.py
-python scripts/validate_generated_artifacts.py
+python scripts/validate_artifacts.py   # 2차: run_case.py가 생성한 산출물까지 함께 검증
 python scripts/build_manifest.py
 ```
 

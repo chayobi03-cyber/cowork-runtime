@@ -89,3 +89,35 @@ Claude가 개발자 역할로 직접 관리한 변경 이력. 각 항목은 독�
   직접 확인.
 - **known_open_items (v0.4.2 기준)**: 없음.
 
+
+## 2026-07-14 — v0.4.3 patch: validator 스크립트 통합 (School 프로젝트 간 기능 중복 점검 계기)
+
+### MAJOR-3: validate_artifacts.py / validate_generated_artifacts.py / validate_tool_contracts.py 중복
+
+- **문제**: 세 스크립트가 동일한 골격("(경로 또는 glob 패턴, 스키마) 쌍 순회 → load_json →
+  validate_instance → 에러 수집 → print_result")을 대상 디렉토리만 바꿔 반복하고 있었다.
+  더 심각한 문제: `validate_artifacts.py`는 `data/sample/tool_contracts/`의 파일 경로를
+  하드코딩했는데, 그 맵에는 `TOOL-S2P-ANALYZER.json` 딱 1개만 들어있었다. 실제 그 폴더에는
+  6개 파일(TOOL-ANNOTATION-PARSER, TOOL-CONSTRAINT-CHECKER, TOOL-REPORT-DATA-BUILDER,
+  TOOL-S2P-ANALYZER, TOOL-SIMPLE-EVALUATOR, TOOL-SIMPLE-RAG-RETRIEVER)가 있어 나머지 5개는
+  한 번도 schema 검증을 받지 않고 있었다. 이건 2026-07-11 패치에서 이미 한 번 고쳤던 것과
+  같은 클래스의 버그(경로 하드코딩 → 새/기존 파일 조용히 누락)가 다른 스크립트에 남아있던
+  경우다.
+- **재현**: `data/sample/tool_contracts/`에 필수 필드가 전부 빠진 가짜 파일을 넣고
+  기존 `validate_artifacts.py`를 실행하면 `[OK]`(exit 0)로 조용히 통과함을 직접 확인. 같은
+  조건에서 통합본은 9개 필수 필드 누락 에러와 함께 `[FAIL]`(exit 1)로 정상 실패.
+- **수정**: 세 스크립트를 `scripts/validate_artifacts.py` 하나로 통합. 대상을 전부
+  `(glob 패턴, 스키마, required bool)` 선언적 리스트로 바꿔 하드코딩을 제거했다.
+  `required=True`인 그룹(기존 샘플 fixture, tool_contracts)은 0개 매치 시 실패 처리해
+  fixture가 실수로 삭제/이름변경되는 것도 잡는다. `required=False`인 그룹(generated/ 하위)은
+  `run_case.py` 실행 전에는 0개 매치라도 통과하고, 실행 후 재호출하면 생성물까지 검증한다 —
+  기존에 "실행 전 1회 + 실행 후 1회"였던 사용 패턴을 그대로 유지하되 스크립트 이름만 하나로
+  줄었다(README.md 실행 방법 갱신).
+  `validate_generated_artifacts.py`, `validate_tool_contracts.py`는 삭제.
+- **검증**: 통합 전후 결과를 동일 데이터로 비교 — 기존 3개 스크립트 전부 `[OK]`/exit 0,
+  통합본도 `[OK] artifacts validated (30 files/lines checked)`/exit 0으로 일치. 이후
+  `validate_json_schema.py` → `validate_node_registry.py` → `validate_artifacts.py` →
+  `build_manifest.py` 전체 파이프라인을 실제 repo 파일 기준으로 재실행해 정상 동작 확인.
+- **known_open_items (v0.4.3 기준)**: 없음. 단, 이번 발견 계기가 "School 프로젝트 간 기능
+  중복 점검"이었으므로 유사한 하드코딩 패턴이 다른 스크립트에도 남아있을 가능성은 배제하지
+  않는다 — 다음 냉정 audit 때 점검 후보로 남긴다.
