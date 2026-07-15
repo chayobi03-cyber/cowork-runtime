@@ -42,7 +42,7 @@ CST Overview Help.pdf의 "Perform an Electromagnetic Simulation" 8단계와 4개
 | 필드 | 내용 |
 |---|---|
 | 핵심 항목 | 형상(Shape) 생성/import, 재질(Material) 정의, Boundary Condition 설정 |
-| 판단 기준 | **확인 필요** — 재질 물성값 출처(데이터시트 vs 라이브러리 기본값), Boundary Condition 선택 근거(open vs PEC 등) |
+| 판단 기준 | **[확정 — 출처: CST 공식 help 원문(다수 CST 사용자 포럼에 인용된 공식 문구로 교차검증, 2026-07-15), 신뢰도: 중]** Boundary Condition은 해석 대상의 물리적 외부 환경을 그대로 반영하도록 선택한다. `Open (PML)`: 자유공간처럼 동작, 파가 최소 반사로 통과 — 방사/개방 문제 기본 선택. `Open (add space)`: Open과 동일하되 farfield 계산용 추가 공간 포함 — 안테나 문제에 권장. `PEC`: 이상도체 벽 가정이 타당한 경우에만 사용. `Periodic`: 주기 구조(unit cell)에 적용. — 재질 물성값 출처(데이터시트 vs 라이브러리 기본값)는 여전히 **확인 필요**(공식 문서상 우선순위 규칙 미확인, 2026-07-15 조사에서도 미확보 — 사내 실무 판단으로 채우는 게 ROI상 더 맞다는 기존 판단 유지) |
 | 흔한 실수 | 재질 오할당, Boundary Condition 누락/과다 지정 (CAD import 단계의 단위 불일치도 포함 가능 — 확인 필요) |
 | 업무별 특화 슬롯 | 이 업무에서 자주 쓰는 형상/재질 조합, 이 업무 특유의 BC 설정 |
 
@@ -51,7 +51,7 @@ CST Overview Help.pdf의 "Perform an Electromagnetic Simulation" 8단계와 4개
 | 필드 | 내용 |
 |---|---|
 | 핵심 항목 | Hexahedral Mesh, Tetrahedral/Surface Mesh, 적응형 메쉬 리파인 |
-| 판단 기준 | **메쉬 수렴(convergence) 확인** — 메쉬를 계속 세분화해도 관심 결과(주로 S-parameter)가 더 이상 유의미하게 변하지 않는 지점까지 확인 (출처: Microwave Journal 가이드, `DOMAIN_NOTES` 참조) |
+| 판단 기준 | **메쉬 수렴(convergence) 확인** — 메쉬를 계속 세분화해도 관심 결과(주로 S-parameter)가 더 이상 유의미하게 변하지 않는 지점까지 확인 (출처: Microwave Journal 가이드, `DOMAIN_NOTES` 참조). **[확정 — 출처: mweda.com CST2013 미러, Time Domain Solver Overview 원문 직접 대조, 신뢰도: 상, 2026-07-15]** Hexahedral 메쉬는 Transient(FIT)/TLM 두 시간영역 솔버가 공유하지만 세부 타입이 `Hexahedral`(Transient/FIT용)과 `Hexahedral TLM`(TLM용)으로 구분됨. TLM은 EMC/EMI/E3 계열 문제에 특히 적합하며 octree 기반 메쉬로 셀 수를 효율화. **[확정 — 출처: CST2013 공식 Adaptive Mesh Refinement 설정문서, 신뢰도: 상, 2026-07-15]** Transient solver의 adaptive mesh refinement는 "Minimum" 패스 설정값이 기본 2회 — S-parameter가 두 패스 사이 유의미하게 변하지 않을 때까지 반복하되 최소 2회는 항상 수행. (Frequency Domain solver의 최소 pass 기본값은 이번 조사에서 미확인 — **확인 필요**로 유지) |
 | 흔한 실수 | 수렴 확인 없이 기본 메쉬로 결과 확정, tetrahedral 솔버에서 mesh adaptation이 형상 근사 자체는 개선하지 못한다는 점 간과 |
 | 업무별 특화 슬롯 | 이 업무에서 메쉬 밀도를 특히 신경 써야 하는 영역(좁은 간격, 얇은 도체 등) |
 
@@ -86,9 +86,12 @@ CST Overview Help.pdf의 "Perform an Electromagnetic Simulation" 8단계와 4개
 
 ## 아직 채우지 못한 것 (다음 세션 또는 위임 시점에 확인)
 
-- 1단계(모델링) 판단 기준 — 재질 물성값 출처, Boundary Condition(open vs PEC) 선택 근거는
-  CST 문서로 확인할 사안이라기보다 **사내 실무 판단 기준**에 가까움 — 업무별 특화 카드 작성 시
-  실제 파트원 답변으로 채우는 게 맞다 (원문 재조사보다 이쪽이 ROI가 높음)
+- 1단계(모델링) Boundary Condition은 2026-07-15 공식 help 원문 교차검증으로 채움. 다만
+  재질 물성값 출처(데이터시트 vs 라이브러리 기본값) 우선순위는 CST 문서로 확인할 사안이라기보다
+  **사내 실무 판단 기준**에 가까움 — 업무별 특화 카드 작성 시 실제 파트원 답변으로 채우는 게
+  맞다 (원문 재조사보다 이쪽이 ROI가 높음)
+- 2단계(메쉬) Frequency Domain solver의 adaptive mesh 최소 pass 기본값은 2026-07-15
+  조사에서 확인 안 됨 — Transient solver(최소 2회)만 확정, F-solver는 여전히 확인 필요
 - 3·4단계는 2026-07-13 웹 조사(CST 구버전 공개 매뉴얼, rose-hulman.edu 미러)로 확인 완료.
   다만 이 매뉴얼은 2008년판이라 최신(2026) 버전과 세부 UI/옵션이 다를 수 있음 — 원문(3D
   Simulation Help.pdf) 전체 대조는 여전히 위임 시점에 확인

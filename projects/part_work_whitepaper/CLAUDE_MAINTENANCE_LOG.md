@@ -367,3 +367,32 @@
 **다음 세션 확인할 것**
 - 위 GitHub 토큰이 실제로 폐기됐는지 확인(사람이 직접 처리, Claude가 대신 못 함)
 - "외부 AI 리서치 반영 ≠ School 재판정 트리거" 혼동이 재발하면 2회째로 카운트하고 승격 검토
+## 2026-07-15 — GPT 딥리서치(1·2단계 판단기준) 독립검증 및 반영
+
+**요청 배경**: 1·2단계 판단기준을 CST 공식 워크플로우 자료로 채우기 위해 GPT에게 6절
+11항목 구조 프롬프트로 위임, 결과를 독립검증 후 반영.
+
+**독립검증 결과 (web_fetch로 원문 직접 대조)**
+- ✅ 확인됨: Hexahedral vs Hexahedral TLM 메쉬 구분, TLM=EMC/EMI/E3 특화 —
+  mweda.com CST2013 Time Domain Solver Overview 원문 직접 대조, 신뢰도 상으로 반영
+- ✅ 확인됨(뉘앙스 정정): Boundary Condition(open/open add space/PEC/periodic) 정의
+  — 내용은 CST 공식 help 원문과 일치(다수 사용자 포럼에 인용된 원문으로 교차검증)하나,
+  GPT가 출처로 댄 "rose-hulman.edu 2008판"에는 이 설명이 없음(직접 fetch로 미확인) —
+  **오귀속(misattribution) 발견 및 정정**, 출처를 실제 확인된 근거로 교체 후 반영
+- ✅ 확인됨: Transient solver adaptive mesh 최소 pass 기본값 2회 — CST2013 공식
+  Adaptive Mesh Refinement 설정문서(edatop.com 미러) 직접 대조
+- ❌ 미확인, 반영 보류: Frequency Domain solver 최소 pass "3회" — 공식 문서에서 해당
+  숫자를 찾지 못함. GPT 주장을 그대로 반영하지 않고 "확인 필요"로 유지
+- ⚠️ 반영 제외: fit/TLM 메쉬 정밀도 세부 결정요인(GPT 2차 답변) — GPT 스스로도 "공식
+  자료 불충분" 인정한 부분이라 문서에 넣지 않음
+- 🔲 검증 불가라 미반영: YouTube 튜토리얼 인용
+
+**결론**: fabrication은 없었으나 출처 오귀속(rose-hulman → 실제로는 확인 안 됨) 1건과
+근거 없는 구체 수치("F-solver 최소 3pass") 1건을 걸러냄. GPT 산출물 중 검증 통과분만
+`CST_INTERPRETATION_COMMON_METHOD.md` 1·2단계 표에 반영(신뢰도 태그 포함, 3·4단계와
+동일 형식).
+
+**다음 세션 확인할 것**
+- Frequency Domain solver의 adaptive mesh 최소 pass 기본값 — 필요 시 재조사
+- 1단계 재질 물성값 출처(데이터시트 vs 라이브러리)는 여전히 사내 실무 판단 영역 —
+  업무별 특화 카드 작성 시 파트원 답변으로 채우는 방향 유지
