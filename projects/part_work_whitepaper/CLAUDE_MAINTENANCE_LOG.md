@@ -339,3 +339,31 @@
 - 이후 커밋부터 한국어 메시지 적용되는지 확인
 
 
+## 2026-07-15 — 외부 레퍼런스 독립검증·반영 및 GitHub 인증 세션 운영 메모
+
+**외부 레퍼런스 검증 (커밋 e3cc3fc)**
+- GPT 딥리서치가 제안한 CST Studio Suite Learning Edition / NASA SEH·NPR 7150.2(D판) /
+  ProvONE·PROV-O / Provena(CSIRO) / WATTS(Argonne) 5건을 web_search로 독립 검증 —
+  fabrication 없음, 전량 실존 확인.
+- `CST_REFERENCE_SOURCES.md`(실무 사이트)와 `WRITING_METHODOLOGY.md` A절(A-06~A-09)에 반영.
+- WATTS는 원논문에서 "formal workflow specification 미제공"을 명시함을 확인 — provenance
+  도구가 아니라 입력 템플릿·실행자동화 도구에 가까움. GPT 제안의 프레이밍이 과장돼 있어
+  A-09에 주의 문구로 정정 반영(provenance 근거 역할은 A-07/A-08이 담당).
+
+**범위 판정 관련 확인 (문서 반영 없음, 대화 판단으로만 기록)**
+- "외부 AI 딥리서치 결과를 얼마나 반영했는가"는 4.3.2 재판정 트리거(버전 3회 이상 갱신 /
+  기능범위 실질 확대) 대상이 아님을 재확인. 참고자료 축적(Research Track 도메인 노트, 개수
+  제한 없음)과 MVP 범위 절단 판정(4.3, School 프로젝트 단위)은 별개 축 — 이번 세션에서 혼동
+  발생했다가 정정. 1회 발생이라 5절 사다리 원칙상 지침 문서에는 아직 추가하지 않음(2회째
+  반복 시 승격 후보).
+
+**GitHub 인증 — 세션 한정 운영 메모**
+- device flow로 발급한 토큰(scope=repo)을 이번 세션 동안은 git remote에 유지하기로 사람과
+  합의 — 매 push마다 재인증하는 대신 세션 내 여러 push를 토큰 재사용으로 처리(ROI 판단).
+- 트레이드오프 고지 완료: 이 토큰은 저장소 하나가 아니라 계정이 접근 가능한 전체 repo에
+  대한 읽기/쓰기 권한을 가짐. 세션 종료 시 GitHub Settings → Developer settings에서 토큰
+  폐기(revoke) 필요.
+
+**다음 세션 확인할 것**
+- 위 GitHub 토큰이 실제로 폐기됐는지 확인(사람이 직접 처리, Claude가 대신 못 함)
+- "외부 AI 리서치 반영 ≠ School 재판정 트리거" 혼동이 재발하면 2회째로 카운트하고 승격 검토
