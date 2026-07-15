@@ -396,3 +396,37 @@
 - Frequency Domain solver의 adaptive mesh 최소 pass 기본값 — 필요 시 재조사
 - 1단계 재질 물성값 출처(데이터시트 vs 라이브러리)는 여전히 사내 실무 판단 영역 —
   업무별 특화 카드 작성 시 파트원 답변으로 채우는 방향 유지
+
+## 2026-07-16 — 부서회의 결과 반영 (Q1/Q4 확정) + 독립검증 사후정정 사례
+
+**부서회의 결과 반영 (커밋 e687f8d)**
+- Q4(판정주체): 창엽님 1차 판정 + 제작완료 후 파트장 제작보고로 확정. 보고 형식·시점은
+  여전히 확인 필요 — 후속 확인 항목으로 남김.
+- Q1(소파트별 반복업무 3개씩): 폐기. 대표주제 2개 체계로 전환 — 대표주제1 = CST MWS 관련
+  EMC 해석 가이드(TOPIC-0003과 동일), 대표주제2는 미정.
+- SHARED_FOLDER_AUTOMATION.md 실행주체: 창엽님으로 확정("누가 트리거하는가"만 확정, 사내
+  자동화 도구로의 대체 여부는 별개 사안으로 계속 보류).
+- Q2/Q3/Q5(사내 LLM 허용범위, 기존 문서도구, 발송타이밍)는 여전히 미확정.
+
+**독립검증 사후정정 사례 (Coworkai detailed_rules v11, 4.7.1 신설의 계기)**
+- Agentic 워크플로우 오픈소스·문헌 조사(GPT 2건 + Claude 자체 조사)를 병합·독립검증하는
+  과정에서, CoVe(Chain-of-Verification)와 Provena(클라우드 provenance 시스템)를 둘 다
+  "Coworkai 원칙 위반"으로 성급히 단정했다가 창엽님 지적으로 정정됨 — "참고/벤치마크
+  단계"와 "실제 채택 단계"를 구분하지 않은 동일한 범주 오류였음.
+- 이 선례를 근거로 `cowork-runtime` 저장소 `rules/coworkai_detailed_rules.md`에 4.7.1
+  신설(v10 → v11, 커밋 c73d443). 5절 사다리 2단계("같은 실수 2회 이상 반복") 기준 충족.
+- 상세 조사 결과·병합본은 이 대화의 산출물 파일(`research_result_agentic_workflow.md`,
+  Claude 세션 로컬 — 이 저장소에는 아직 반영 안 함)에 있음. 필요 시 다음 세션에서
+  `EXTERNAL_STRUCTURE_BENCHMARK_REPORT.md`에 신규 절로 편입 검토.
+
+**GitHub 인증 방식 우선순위 변경**
+- Fine-grained PAT(저장소 단위 제한, 만료기한 직접 지정)를 1안으로, 기존 curl 기반 device
+  flow는 2안(즉석 인증용, 폐기 아님)으로 재정렬. 상세는 저장소 루트
+  `GIT_AUTH_TROUBLESHOOTING.md` 참조(커밋 1321961).
+
+**다음 세션 확인할 것**
+- 제작보고(파트장 대상) 형식·시점
+- Q2/Q3/Q5 (사내 LLM 허용범위, 기존 문서도구, 발송타이밍)
+- 대표주제2 확정 여부
+- 조사 결과(research_result_agentic_workflow.md)를 EXTERNAL_STRUCTURE_BENCHMARK_REPORT.md에
+  편입할지 여부
