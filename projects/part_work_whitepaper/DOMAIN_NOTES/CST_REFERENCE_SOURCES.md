@@ -45,6 +45,7 @@
 | Signal Integrity Testing: Tools for High-Speed PCB Validation | AllPCB | TDR·de-embedding 등 측정-시뮬레이션 상관관계 실무 팁 | 검증 단계 참고 |
 | CST VBA Macro Language 미러 | mweda.com | CST 구버전 VBA 레퍼런스 미러(공식 도움말 보완용) | 공식 문서 접근 안 될 때 대체 |
 | CST MICROWAVE STUDIO Workflow & Solver Overview (2008판) | rose-hulman.edu 미러(대학 강의자료) | "Which Solver to Use" 표, 포트 선택 기준 등 CST 구버전 공식 매뉴얼 전문 | 솔버선택/포트선택 판단기준 근거 (TOPIC-0003 4단계) |
+| CST Studio Suite Learning Edition | Dassault Systèmes SIMULIA, 공식 (edu.3ds.com, 3dswym.3dexperience.3ds.com) | 무료 학습용 에디션, 공식 Tutorials(설명문+CST파일+영상) 및 HTML 전체 문서 제공. 2026-07-15 독립검증 완료(실존 확인) | 1·2단계(모델링·메쉬) 공식 절차 1차 근거, 상용 라이선스 없이도 접근 가능한 검증 경로 |
 
 ---
 

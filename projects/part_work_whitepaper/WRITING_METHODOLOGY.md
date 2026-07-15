@@ -40,6 +40,10 @@ REVIEW.md의 승격 트리거 재사용)으로 갱신한다.
 | A-03 | PARA (Tiago Forte) | actionability 기준 분류, just-in-time 정리(캘린더 대신 필요 시점에) |
 | A-04 | GitLab Handbook-first | 단일 진실원(single source of truth) 운영 방식 — 본문의 "요약만" 원칙 근거 |
 | A-05 | Diátaxis | 문서 역할 분리(설명/방법/참고) — 본문(설명) vs Card(방법) vs Registry(참고) 구조 근거 |
+| A-06 | NASA Systems Engineering Handbook (SEH) / NPR 7150.2(현재 D판) | 문서화 깊이는 프로젝트 규모·복잡도에 따라 달라질 수 있다는 원칙 — Registry 항목별로 깊이가 달라도 되는 현재 방식과 일치. 2026-07-15 독립검증 완료(현행 문서 실존 확인) |
+| A-07 | ProvONE (W3C PROV 확장, DataONE) / PROV-O | 워크플로우 provenance를 "무엇을 어떤 입력으로 돌렸고 무엇이 나왔는지" 그래프로 남기는 모델 — TOPIC_REGISTRY.yaml의 problem/input/output/status/judge 필드 설계와 개념적으로 유사. 2026-07-15 독립검증 완료 |
+| A-08 | Provena (CSIRO, RRAP 프로그램) | 실제 가동 중인 modelling/simulation provenance 시스템 사례 — dataset·model·실행 이력을 등록·추적하는 운영 패턴 참고용. 2026-07-15 독립검증 완료(실사용 사례, v2.0까지 운영 중) |
+| A-09 | WATTS (Argonne National Lab, JOSS 2022) | ⚠️ **주의**: 2026-07-15 독립검증 시 원논문에서 "formal workflow specification 메커니즘 미제공"을 명시함 확인 — provenance/이력 추적 도구가 아니라 입력파일 **템플릿·실행 자동화** 도구에 가까움. 도메인도 원자로(MCNP) 시뮬레이션이라 CST/EM과 무관. "입력 템플릿화" 패턴 참고에만 한정해서 인용하고, provenance 근거로는 쓰지 않는다(그 역할은 A-07/A-08이 담당) |
 
 ---
 
