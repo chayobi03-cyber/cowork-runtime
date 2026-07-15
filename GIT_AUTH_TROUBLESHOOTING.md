@@ -67,7 +67,35 @@ git remote set-url origin "https://github.com/chayobi03-cyber/cowork-runtime.git
 
 토큰을 담은 임시 파일(있다면)도 push 후 바로 삭제한다.
 
-## 앞으로의 순서
+## 우선순위 갱신 (2026-07-16) — Fine-grained PAT를 1안으로
+
+Device flow(위 "권장 방식")는 `scope=repo`라 계정이 접근 가능한 **모든** 저장소에 대한 읽기/쓰기
+권한을 가지며, 만료(`expires_in`)도 설정돼 있지 않아 폐기하지 않는 한 무기한 유효하다. 창엽님이
+"매번 재발급 승인하는 번거로움 대신, 저장소 하나로 범위를 좁히고 만료 기한도 직접 정할 수 있는
+방식"을 요청해(2026-07-16) 다음으로 우선순위를 재정렬한다.
+
+**1안 (다음 세션부터 먼저 안내할 것) — Fine-grained Personal Access Token**
+
+창엽님이 GitHub Settings → Developer settings → Fine-grained tokens에서 직접 발급:
+- Repository access: `cowork-runtime` 저장소 하나로 제한
+- Permissions: `Contents: Read and write`만 (그 이상 불필요)
+- Expiration: 원하는 주기로 직접 지정(예: 7일/30일/90일/커스텀) — 매 세션 재인증 없이 만료 전까지
+  재사용 가능
+- 발급된 토큰 값은 Claude의 memory에 저장하지 않는다(credential은 memory 대상 아님) — 창엽님이
+  보관했다가 세션 시작 시 대화에 붙여넣으면, 그 값으로 바로 `git remote set-url`에 물려서 push한다
+  (아래 "권장 방식" 3단계와 동일한 방식, device flow 단계만 생략)
+
+**2안 (완전히 폐기하지 않음, 창엽님이 PAT 없이 즉석에서 인증하고 싶을 때)** — 위 "권장 방식"의
+curl 기반 device flow. 매번 새로 발급받아야 하고 스코프가 넓지만, 별도 사전 설정 없이 그 자리에서
+바로 인증 가능하다는 장점이 있어 대안으로 유지한다.
+
+**3안 (fallback)** — `setsid nohup gh auth login ...` 방식. 신뢰도가 낮아(성공/실패가 오락가락)
+1·2안이 모두 막혔을 때만 시도한다.
+
+> 앞으로 Claude가 이 저장소에 push해야 할 때는, **먼저 창엽님께 1안(Fine-grained PAT)을 쓸지
+> 2안(device flow)을 쓸지 물어보고**, 답이 없거나 "아무거나"면 1안을 우선 안내한다.
+
+## 앞으로의 순서 (기존 device flow 진행 시 — 위 1안 미사용 시에만 해당)
 
 1. **먼저**: 위 "권장 방식"(curl 기반 device flow, 백그라운드 프로세스 없음)을 시도한다.
 2. 이게 막히면(예: device flow API 자체가 네트워크 정책으로 차단된 환경) `setsid nohup gh auth
